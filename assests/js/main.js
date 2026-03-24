@@ -1,95 +1,71 @@
-// Kart verileri
-const cardsData = [
-    {
-        id: 1,
-        title: "Eğitim Hayatım",
-        description: "Eğitim yolculuğum ve başarılarım",
-        image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663372407023/h4RnNWM7asRNrn7fVPYT3E/diploma-AmbtFbkfPPcH24Lh8L2wn9.webp",
-        backgroundColor: "linear-gradient(135deg, #fef5e7 0%, #fdebd0 100%)"
-    },
-    {
-        id: 2,
-        title: "İlgi Duyduklarım",
-        description: "Hoşlandığım şeyler ve aktiviteler",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=400&fit=crop",
-        backgroundColor: "linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%)"
-    },
-    {
-        id: 3,
-        title: "İzlediğim Filmler & Diziler",
-        description: "Favori film ve dizi koleksiyonum",
-        image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663372407023/h4RnNWM7asRNrn7fVPYT3E/movies-gmHxWxSKLYv7QrNyRvKpJA.webp",
-        backgroundColor: "linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%)"
-    },
-    {
-        id: 4,
-        title: "Okuduğum Kitaplar",
-        description: "Sevdiğim kitaplar ve okuma listem",
-        image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663372407023/h4RnNWM7asRNrn7fVPYT3E/books-7hJgySxpB7ywmmk5hRL2DD.webp",
-        backgroundColor: "linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%)"
-    },
-    {
-        id: 5,
-        title: "Evcil Hayvanlarım",
-        description: "Sevgili kedi ve köpeğim",
-        image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663372407023/h4RnNWM7asRNrn7fVPYT3E/pets-25f5STB8f7swANYh5QjUM9.webp",
-        backgroundColor: "linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%)"
-    },
-    {
-        id: 6,
-        title: "Gelecek Planlarım",
-        description: "Hayallerim ve hedeflerim",
-        image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663372407023/h4RnNWM7asRNrn7fVPYT3E/sunset-Uc35HanRGc4BDP6wMAUpFb.webp",
-        backgroundColor: "linear-gradient(135deg, #fffde7 0%, #fff9c4 100%)"
-    }
-];
+/* ========================================
+   script.js — Kişisel Web Sayfası Etkileşimleri
+   ======================================== */
 
-// Kartları oluştur
-function createCards() {
-    const cardsGrid = document.getElementById('cardsGrid');
-    
-    cardsData.forEach((card, index) => {
-        const cardElement = document.createElement('div');
-        cardElement.className = 'card';
-        cardElement.style.animationDelay = `${index * 0.1}s`;
-        
-        cardElement.innerHTML = `
-            <div class="card-image" style="background: ${card.backgroundColor};">
-                <img src="${card.image}" alt="${card.title}" loading="lazy">
-            </div>
-            <div class="card-content">
-                <h2 class="card-title">${card.title}</h2>
-                <p class="card-description">${card.description}</p>
-            </div>
-        `;
-        
-        cardsGrid.appendChild(cardElement);
-    });
-}
+/**
+ * 3D Tilt (Eğilme) Efekti
+ * Fare kartın üzerinde hareket ettiğinde kart hafifçe eğilir.
+ * Fare karttan ayrıldığında kart düzleşir.
+ */
+document.querySelectorAll('.card').forEach(function(card) {
 
-// Sayfa yüklendiğinde kartları oluştur
-document.addEventListener('DOMContentLoaded', () => {
-    createCards();
-    
-    // Kartlara tıklama efekti ekle (opsiyonel)
-    const cards = document.querySelectorAll('.card');
-    cards.forEach(card => {
-        card.addEventListener('click', function() {
-            console.log('Kart tıklandı:', this);
-            // Burada ek işlemler yapabilirsiniz
-        });
-    });
+  // Fare hareket ettikçe kartı eğilt
+  card.addEventListener('mousemove', function(e) {
+    var rect = card.getBoundingClientRect();
+
+    // Farenin kart içindeki konumunu -0.5 ile +0.5 arasına normalize et
+    var x = (e.clientX - rect.left) / rect.width  - 0.5;
+    var y = (e.clientY - rect.top)  / rect.height - 0.5;
+
+    // Eğilme açısını uygula (maksimum 6 derece)
+    card.style.transform =
+      'translateY(-8px) scale(1.02) ' +
+      'rotateX(' + (-y * 6) + 'deg) ' +
+      'rotateY(' + ( x * 6) + 'deg)';
+  });
+
+  // Fare karttan ayrılınca sıfırla
+  card.addEventListener('mouseleave', function() {
+    card.style.transform = '';
+  });
+
 });
 
-// Smooth scroll efekti (opsiyonel)
-document.addEventListener('scroll', () => {
-    const cards = document.querySelectorAll('.card');
-    cards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-        
-        if (isVisible) {
-            card.style.opacity = '1';
-        }
-    });
+
+/**
+ * Kart Tıklama Efekti
+ * Karta tıklandığında kısa bir "pulse" animasyonu verir.
+ */
+document.querySelectorAll('.card').forEach(function(card) {
+
+  card.addEventListener('click', function() {
+    // Mevcut animasyonu temizle
+    card.style.transition = 'transform 0.1s ease';
+    card.style.transform   = 'scale(0.96)';
+
+    // 150ms sonra geri getir
+    setTimeout(function() {
+      card.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+      card.style.transform  = '';
+    }, 150);
+  });
+
+});
+
+
+/**
+ * Sayfa Yüklenince Kartları Sırayla Göster
+ * IntersectionObserver ile kartlar ekrana girdiğinde görünür hale gelir.
+ * (CSS animasyonu zaten bunu yapıyor; bu blok ek destek sağlar.)
+ */
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.card').forEach(function(card) {
+  observer.observe(card);
 });

@@ -3,129 +3,175 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hakkımdaki Her Şey | Modern Portfolyo</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="assets/css/style.css"/>
-  <link rel="stylesheet" href="assets/js/main.js"/>
+  <title>Naciye Duygu — Portfolyo</title>
+
+  <!-- CSS Bağlantısı Güncellendi -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-<!-- NAVBAR -->
-<nav>
-  <div class="nav-logo">Sayfa Paneli</div>
-  <div class="nav-links">
-    <a href="#home">Ana Sayfa</a>
-    <a href="#about">Hakkımda</a>
-    <a href="#contact">İletişim</a>
-  </div>
-  <div class="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
+<!-- ÖZEL İMLEÇ (JS Beklentisi) -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-trail" id="cursorTrail"></div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-logo">YB<span class="dot">.</span></div>
+
+  <ul class="nav-links">
+    <li><a href="#about">Hakkımda</a></li>
+    <li><a href="#skills">Beceriler</a></li>
+    <li><a href="#projects">Projeler</a></li>
+    <li><a href="#contact">İletişim</a></li>
+  </ul>
+
+  <!-- HAMBURGER (JS Beklentisi) -->
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
   </div>
 </nav>
 
+<!-- MOBİL MENÜ (JS Beklentisi) -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#about" class="mobile-link">Hakkımda</a></li>
+    <li><a href="#skills" class="mobile-link">Beceriler</a></li>
+    <li><a href="#projects" class="mobile-link">Projeler</a></li>
+    <li><a href="#contact" class="mobile-link">İletişim</a></li>
+  </ul>
+</div>
+
 <!-- HERO -->
-<header class="hero" id="home">
-  <div class="hero-content">
-    <h1 class="hero-welcome">Hoş Geldiniz</h1>
-    <h2 class="hero-subtitle">Hakkımdaki Her Şey <span class="hero-heart">♡</span></h2>
-    <div class="divider"></div>
-    <p class="hero-description">Eğitim, hobi, ilgi alanları ve hayallerim hakkında bilgi edinin</p>
+<section class="hero" id="hero">
+  <!-- ARKA PLAN CANVAS (JS Beklentisi) -->
+  <canvas id="bgCanvas"></canvas>
+  <div class="noise-overlay"></div>
+
+  <div class="hero-content reveal-up">
+    <div class="hero-tag">Bilgisayar Programcılığı Öğrencisi</div>
+
+    <h1 class="hero-name">
+      <span>Naciye</span>
+      <span class="italic">Duygu</span>
+    </h1>
+
+    <p class="hero-sub">
+      “Kod yazmak, düşünceleri çalışan gerçekliğe dönüştürmenin en güçlü yoludur.<br/>
+    </p>
+
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">Projeleri Gör</a>
+      <a href="#contact" class="btn-ghost">İletişime Geç</a>
+    </div>
   </div>
-</header>
+</section>
 
-<!-- KARTLAR -->
-<main class="grid-container">
-  <div class="grid">
-
-    <!-- 1 – Eğitim Hayatım -->
-    <div class="card" data-tilt>
-      <div class="card-img-wrapper">
-        <img src="https://images.unsplash.com/photo-1523050335392-9ae824979603?auto=format&fit=crop&w=500&q=80" alt="Eğitim Hayatım" class="card-photo">
-        <div class="card-overlay"></div>
+<!-- ABOUT -->
+<section class="section about-section" id="about">
+  <div class="section-inner reveal-up">
+    <h2 class="section-title">Merhaba, ben <em>Yunus Barış</em></h2>
+    <p class="about-desc">
+      Bilgisayar programcılığı öğrencisiyim. Kod yazmayı bir sanat olarak görüyorum.
+    </p>
+    
+    <!-- STATS (JS Beklentisi) -->
+    <div class="about-stats">
+      <div class="stat">
+        <span class="stat-num" data-target="20">0</span>
+        <span class="stat-label">Tamamlanan Proje</span>
       </div>
-      <div class="card-body">
-        <h3 class="card-title">Eğitim Hayatım</h3>
-        <p class="card-desc">Akademik yolculuğum ve başarılarım</p>
-        <span class="card-badge">Eğitim</span>
+      <div class="stat">
+        <span class="stat-num" data-target="500">0</span>
+        <span class="stat-label">Kahve Tüketimi</span>
       </div>
     </div>
-
-    <!-- 2 – İlgi Alanlarım -->
-    <div class="card" data-tilt>
-      <div class="card-img-wrapper">
-        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=500&q=80" alt="İlgi Alanlarım" class="card-photo">
-        <div class="card-overlay"></div>
-      </div>
-      <div class="card-body">
-        <h3 class="card-title">İlgi Alanlarım</h3>
-        <p class="card-desc">Tutkularım ve hobilerim</p>
-        <span class="card-badge">Hobi</span>
-      </div>
-    </div>
-
-    <!-- 3 – Filmler, Diziler -->
-    <div class="card" data-tilt>
-      <div class="card-img-wrapper">
-        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=500&q=80" alt="Filmler ve Diziler" class="card-photo">
-        <div class="card-overlay"></div>
-      </div>
-      <div class="card-body">
-        <h3 class="card-title">Film, Dizi & Alıntılar</h3>
-        <p class="card-desc">Favorilerim ve ilham veren sözler</p>
-        <span class="card-badge">Medya</span>
-      </div>
-    </div>
-
-    <!-- 4 – Okuduğum Kitaplar -->
-    <div class="card" data-tilt>
-      <div class="card-img-wrapper">
-        <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=500&q=80" alt="Kitaplar" class="card-photo">
-        <div class="card-overlay"></div>
-      </div>
-      <div class="card-body">
-        <h3 class="card-title">Okuduğum Kitaplar</h3>
-        <p class="card-desc">Kitap listem ve favorilerim</p>
-        <span class="card-badge">Okuma</span>
-      </div>
-    </div>
-
-    <!-- 5 – Evcil Hayvanlarım -->
-    <div class="card" data-tilt>
-      <div class="card-img-wrapper">
-        <img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&w=500&q=80" alt="Evcil Hayvanlar" class="card-photo">
-        <div class="card-overlay"></div>
-      </div>
-      <div class="card-body">
-        <h3 class="card-title">Evcil Hayvanlarım</h3>
-        <p class="card-desc">Sevgili dostlarım 🐱🐶</p>
-        <span class="card-badge">Dostlar</span>
-      </div>
-    </div>
-
-    <!-- 6 – Gelecek Planlarım -->
-    <div class="card" data-tilt>
-      <div class="card-img-wrapper">
-        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=80" alt="Gelecek Planlarım" class="card-photo">
-        <div class="card-overlay"></div>
-      </div>
-      <div class="card-body">
-        <h3 class="card-title">Gelecek Planlarım</h3>
-        <p class="card-desc">Hayallerim ve hedeflerim</p>
-        <span class="card-badge">Hedefler</span>
-      </div>
-    </div>
-
   </div>
-</main>
+</section>
 
-<!-- FOOTER -->
-<footer>
-  <p>&copy; 2024 Tüm Hakları Saklıdır | Modern Tasarım</p>
-</footer>
+<!-- PROJECTS (JS Beklentisi) -->
+<section class="section projects-section" id="projects">
+  <div class="section-inner">
+    <h2 class="section-title">Projelerim</h2>
+    <div class="projects-grid">
+      <div class="project-card reveal-up">
+        <div class="project-glow"></div>
+        <h3>E-Ticaret Sitesi</h3>
+        <p>Modern bir alışveriş deneyimi.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<script src="assets/js/main.js"></script>
+<!-- CONTACT (JS Beklentisi - Çok Adımlı Form) -->
+<section class="section contact-section" id="contact">
+  <div class="section-inner reveal-up">
+    <h2 class="section-title">İletişim</h2>
+
+    <!-- Adımlar Barı -->
+    <div class="steps-bar">
+      <div class="step active" data-step="1">1</div>
+      <div class="step" data-step="2">2</div>
+      <div class="step" data-step="3">3</div>
+    </div>
+
+    <form id="contactForm">
+      <!-- ADIM 1 -->
+      <div class="form-step active" data-step="1">
+        <div class="field-group">
+          <input type="text" id="name" placeholder="Adınız" required>
+        </div>
+        <div class="field-group">
+          <input type="email" id="email" placeholder="Email" required>
+        </div>
+        <button type="button" onclick="nextStep(1)" class="btn-primary">Sonraki</button>
+      </div>
+
+      <!-- ADIM 2 -->
+      <div class="form-step" data-step="2">
+        <div class="field-group">
+          <input type="hidden" id="topic">
+          <div class="pills-container">
+            <div class="pill" data-topic="Web Tasarım">Web Tasarım</div>
+            <div class="pill" data-topic="Yazılım">Yazılım</div>
+            <div class="pill" data-topic="Diğer">Diğer</div>
+          </div>
+        </div>
+        <div class="field-group">
+          <textarea id="message" placeholder="Mesajınız" required></textarea>
+        </div>
+        <div class="btn-group">
+          <button type="button" onclick="prevStep(2)" class="btn-ghost">Geri</button>
+          <button type="button" onclick="nextStep(2)" class="btn-primary">Sonraki</button>
+        </div>
+      </div>
+
+      <!-- ADIM 3 (Özet) -->
+      <div class="form-step" data-step="3">
+        <div class="summary">
+          <p><strong>Ad:</strong> <span id="sumName"></span></p>
+          <p><strong>Email:</strong> <span id="sumEmail"></span></p>
+          <p><strong>Konu:</strong> <span id="sumTopic"></span></p>
+          <p><strong>Mesaj:</strong> <span id="sumMsg"></span></p>
+        </div>
+        <div class="btn-group">
+          <button type="button" onclick="prevStep(3)" class="btn-ghost">Geri</button>
+          <button type="submit" id="submitBtn" class="btn-primary">Gönder</button>
+        </div>
+      </div>
+    </form>
+
+    <div id="formSuccess" class="form-success">
+      <h3>Mesaj Gönderildi!</h3>
+      <p>En kısa sürede dönüş yapacağım.</p>
+      <button onclick="resetForm()" class="btn-ghost">Yeni Mesaj</button>
+    </div>
+  </div>
+</section>
+
+<!-- JS Bağlantısı Güncellendi -->
+<script src="assets/js/app.js"></script>
 </body>
 </html>

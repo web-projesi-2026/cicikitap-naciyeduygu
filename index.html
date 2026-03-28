@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Naciye Duygu — Portfolyo</title>
+  <title>Yunus Barış — Portfolyo</title>
 
-  <!-- CSS Bağlantısı Güncellendi -->
+  <!-- CSS Bağlantısı -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
@@ -19,11 +19,13 @@
 
 <!-- NAV -->
 <nav class="nav" id="nav">
-  <div class="nav-logo">ND<span class="dot">.</span></div>
+  <div class="nav-logo">YB<span class="dot">.</span></div>
 
   <ul class="nav-links">
     <li><a href="#about">Hakkımda</a></li>
     <li><a href="#skills">Beceriler</a></li>
+    <li><a href="#experience">Deneyim</a></li>
+    <li><a href="#education">Eğitim</a></li>
     <li><a href="#projects">Projeler</a></li>
     <li><a href="#contact">İletişim</a></li>
   </ul>
@@ -39,6 +41,8 @@
   <ul>
     <li><a href="#about" class="mobile-link">Hakkımda</a></li>
     <li><a href="#skills" class="mobile-link">Beceriler</a></li>
+    <li><a href="#experience" class="mobile-link">Deneyim</a></li>
+    <li><a href="#education" class="mobile-link">Eğitim</a></li>
     <li><a href="#projects" class="mobile-link">Projeler</a></li>
     <li><a href="#contact" class="mobile-link">İletişim</a></li>
   </ul>
@@ -46,7 +50,6 @@
 
 <!-- HERO -->
 <section class="hero" id="hero">
-  <!-- ARKA PLAN CANVAS (JS Beklentisi) -->
   <canvas id="bgCanvas"></canvas>
   <div class="noise-overlay"></div>
 
@@ -54,12 +57,13 @@
     <div class="hero-tag">Bilgisayar Programcılığı Öğrencisi</div>
 
     <h1 class="hero-name">
-      <span>Naciye</span>
-      <span class="italic">Duygu</span>
+      <span>Yunus</span>
+      <span class="italic">Barış</span>
     </h1>
 
     <p class="hero-sub">
-      “Kod yazmak, düşünceleri çalışan gerçekliğe dönüştürmenin en güçlü yoludur.<br/>
+      Kod yazıyorum, dünya kuruyorum.<br/>
+      Satır bir fırça darbesi.
     </p>
 
     <div class="hero-cta">
@@ -72,12 +76,11 @@
 <!-- ABOUT -->
 <section class="section about-section" id="about">
   <div class="section-inner reveal-up">
-    <h2 class="section-title">Merhaba, ben <em>Naciye Duygu</em></h2>
+    <h2 class="section-title">Merhaba, ben <em>Yunus Barış</em></h2>
     <p class="about-desc">
       Bilgisayar programcılığı öğrencisiyim. Kod yazmayı bir sanat olarak görüyorum.
     </p>
     
-    <!-- STATS (JS Beklentisi) -->
     <div class="about-stats">
       <div class="stat">
         <span class="stat-num" data-target="20">0</span>
@@ -91,7 +94,88 @@
   </div>
 </section>
 
-<!-- PROJECTS (JS Beklentisi) -->
+<!-- BECERİLER BÖLÜMÜ -->
+<section class="section skills-section" id="skills">
+  <div class="section-inner reveal-up">
+    <h2 class="section-title">Beceriler</h2>
+    <div class="skills-container" style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 30px;">
+      
+      <!-- Her bir beceri etiketi -->
+      <span class="skill-tag" 
+            style="padding: 10px 25px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; cursor: pointer; transition: all 0.3s ease; display: inline-block; font-family: 'JetBrains Mono', monospace;"
+            onmouseover="this.style.backgroundColor='#e63946'; this.style.borderColor='#e63946'; this.style.transform='translateY(-5px)';"
+            onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)';">
+        HTML5
+      </span>
+
+      <span class="skill-tag" 
+            style="padding: 10px 25px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; cursor: pointer; transition: all 0.3s ease; display: inline-block; font-family: 'JetBrains Mono', monospace;"
+            onmouseover="this.style.backgroundColor='#e63946'; this.style.borderColor='#e63946'; this.style.transform='translateY(-5px)';"
+            onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)';">
+        CSS3 / Tailwind
+      </span>
+
+      <span class="skill-tag" 
+            style="padding: 10px 25px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; cursor: pointer; transition: all 0.3s ease; display: inline-block; font-family: 'JetBrains Mono', monospace;"
+            onmouseover="this.style.backgroundColor='#e63946'; this.style.borderColor='#e63946'; this.style.transform='translateY(-5px)';"
+            onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)';">
+        JavaScript
+      </span>
+
+      <span class="skill-tag" 
+            style="padding: 10px 25px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; cursor: pointer; transition: all 0.3s ease; display: inline-block; font-family: 'JetBrains Mono', monospace;"
+            onmouseover="this.style.backgroundColor='#e63946'; this.style.borderColor='#e63946'; this.style.transform='translateY(-5px)';"
+            onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)';">
+        PHP / MySQL
+      </span>
+
+      <span class="skill-tag" 
+            style="padding: 10px 25px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; cursor: pointer; transition: all 0.3s ease; display: inline-block; font-family: 'JetBrains Mono', monospace;"
+            onmouseover="this.style.backgroundColor='#e63946'; this.style.borderColor='#e63946'; this.style.transform='translateY(-5px)';"
+            onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)';">
+        C# / .NET
+      </span>
+
+      <span class="skill-tag" 
+            style="padding: 10px 25px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; cursor: pointer; transition: all 0.3s ease; display: inline-block; font-family: 'JetBrains Mono', monospace;"
+            onmouseover="this.style.backgroundColor='#e63946'; this.style.borderColor='#e63946'; this.style.transform='translateY(-5px)';"
+            onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)';">
+        Git / GitHub
+      </span>
+
+    </div>
+  </div>
+</section>
+
+<!-- DENEYİM BÖLÜMÜ -->
+<section class="section experience-section" id="experience">
+  <div class="section-inner reveal-up">
+    <h2 class="section-title">Deneyim</h2>
+    <div class="experience-list">
+      <div class="experience-item">
+        <h3>Stajyer Geliştirici</h3>
+        <p>Şirket Adı | 2023 - Günümüz</p>
+        <p>Web projeleri üzerinde çalışma ve teknik destek sağlama.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EĞİTİM BÖLÜMÜ -->
+<section class="section education-section" id="education">
+  <div class="section-inner reveal-up">
+    <h2 class="section-title">Eğitim</h2>
+    <div class="education-list">
+      <div class="education-item">
+        <h3>Bilgisayar Programcılığı</h3>
+        <p>Üniversite Adı | 2022 - 2024</p>
+        <p>Algoritmalar, Veri Yapıları ve Web Teknolojileri odaklı eğitim.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
 <section class="section projects-section" id="projects">
   <div class="section-inner">
     <h2 class="section-title">Projelerim</h2>
@@ -105,26 +189,25 @@
   </div>
 </section>
 
-<!-- CONTACT (JS Beklentisi - Çok Adımlı Form) -->
+<!-- CONTACT -->
 <section class="section contact-section" id="contact">
   <div class="section-inner reveal-up">
     <h2 class="section-title">İletişim</h2>
 
-    <!-- Adımlar Barı -->
     <div class="steps-bar">
       <div class="step active" data-step="1">1</div>
       <div class="step" data-step="2">2</div>
       <div class="step" data-step="3">3</div>
     </div>
 
-    <form id="contactForm">
+    <form id="contactForm" action="https://formspree.io/f/xjgpgldz" method="POST">
       <!-- ADIM 1 -->
       <div class="form-step active" data-step="1">
         <div class="field-group">
-          <input type="text" id="name" placeholder="Adınız" required>
+          <input type="text" name="name" id="name" placeholder="Adınız" required>
         </div>
         <div class="field-group">
-          <input type="email" id="email" placeholder="Email" required>
+          <input type="email" name="email" id="email" placeholder="Email" required>
         </div>
         <button type="button" onclick="nextStep(1)" class="btn-primary">Sonraki</button>
       </div>
@@ -132,7 +215,7 @@
       <!-- ADIM 2 -->
       <div class="form-step" data-step="2">
         <div class="field-group">
-          <input type="hidden" id="topic">
+          <input type="hidden" name="topic" id="topic">
           <div class="pills-container">
             <div class="pill" data-topic="Web Tasarım">Web Tasarım</div>
             <div class="pill" data-topic="Yazılım">Yazılım</div>
@@ -140,7 +223,7 @@
           </div>
         </div>
         <div class="field-group">
-          <textarea id="message" placeholder="Mesajınız" required></textarea>
+          <textarea name="message" id="message" placeholder="Mesajınız" required></textarea>
         </div>
         <div class="btn-group">
           <button type="button" onclick="prevStep(2)" class="btn-ghost">Geri</button>
@@ -171,7 +254,7 @@
   </div>
 </section>
 
-<!-- JS Bağlantısı Güncellendi -->
+<!-- JS Bağlantısı -->
 <script src="assets/js/app.js"></script>
 </body>
 </html>

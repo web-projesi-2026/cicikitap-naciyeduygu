@@ -76,14 +76,15 @@
 <section class="section about-section" id="about">
   <div class="section-inner reveal-up">
     <h2 class="section-title">Merhaba, ben <em>Naciye Duygu</em></h2>
-    <p class="about-desc">
+    
+    <!-- Panel içine alındı -->
+    <div class="about-desc panel">
       Bilgisayar programcılığı öğrencisiyim. 
       <br>
       Çevremdeki genel sorunları gözlemleyip bu sorunlar için fikir ve proje geliştirmeyi severim.
       <br>
-      Düşünmek,tasarlamak ve soyut-somut örneklerle gözlem yapmak en sevdiğim aktivitelerdir.
-      <br>
-    </p>
+      Düşünmek, tasarlamak ve soyut-somut örneklerle gözlem yapmak en sevdiğim aktivitelerdir.
+    </div>
     
     <div class="about-stats">
       <div class="stat">
@@ -98,82 +99,43 @@
   </div>
 </section>
 
-<!-- BECERİLER BÖLÜMÜ -->
+<!-- BECERİLER -->
 <section class="section skills-section" id="skills">
   <div class="section-inner reveal-up">
     <h2 class="section-title">Beceriler</h2>
     <div class="skills-container" style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 30px;">
-      
-      <!-- Her bir beceri etiketi -->
-      <span class="skill-tag" 
-            style="padding: 10px 25px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; cursor: pointer; transition: all 0.3s ease; display: inline-block; font-family: 'JetBrains Mono', monospace;"
-            onmouseover="this.style.backgroundColor='#e63946'; this.style.borderColor='#e63946'; this.style.transform='translateY(-5px)';"
-            onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)';">
-        HTML5
-      </span>
-
-      <span class="skill-tag" 
-            style="padding: 10px 25px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; cursor: pointer; transition: all 0.3s ease; display: inline-block; font-family: 'JetBrains Mono', monospace;"
-            onmouseover="this.style.backgroundColor='#e63946'; this.style.borderColor='#e63946'; this.style.transform='translateY(-5px)';"
-            onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)';">
-        CSS3 / Tailwind
-      </span>
-
-      <span class="skill-tag" 
-            style="padding: 10px 25px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; cursor: pointer; transition: all 0.3s ease; display: inline-block; font-family: 'JetBrains Mono', monospace;"
-            onmouseover="this.style.backgroundColor='#e63946'; this.style.borderColor='#e63946'; this.style.transform='translateY(-5px)';"
-            onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)';">
-        JavaScript
-      </span>
-
-      <span class="skill-tag" 
-            style="padding: 10px 25px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; cursor: pointer; transition: all 0.3s ease; display: inline-block; font-family: 'JetBrains Mono', monospace;"
-            onmouseover="this.style.backgroundColor='#e63946'; this.style.borderColor='#e63946'; this.style.transform='translateY(-5px)';"
-            onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)';">
-        PHP / MySQL
-      </span>
-
-      <span class="skill-tag" 
-            style="padding: 10px 25px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; cursor: pointer; transition: all 0.3s ease; display: inline-block; font-family: 'JetBrains Mono', monospace;"
-            onmouseover="this.style.backgroundColor='#e63946'; this.style.borderColor='#e63946'; this.style.transform='translateY(-5px)';"
-            onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)';">
-        C# / .NET
-      </span>
-
-      <span class="skill-tag" 
-            style="padding: 10px 25px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; cursor: pointer; transition: all 0.3s ease; display: inline-block; font-family: 'JetBrains Mono', monospace;"
-            onmouseover="this.style.backgroundColor='#e63946'; this.style.borderColor='#e63946'; this.style.transform='translateY(-5px)';"
-            onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)';">
-        Git / GitHub
-      </span>
-
+      <span class="skill-tag" onmouseover="this.style.backgroundColor='#e63946'; this.style.borderColor='#e63946'; this.style.transform='translateY(-5px)';" onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)';">HTML5</span>
+      <span class="skill-tag" onmouseover="this.style.backgroundColor='#e63946'; this.style.borderColor='#e63946'; this.style.transform='translateY(-5px)';" onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)';">CSS3 / Tailwind</span>
+      <span class="skill-tag" onmouseover="this.style.backgroundColor='#e63946'; this.style.borderColor='#e63946'; this.style.transform='translateY(-5px)';" onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)';">JavaScript</span>
+      <span class="skill-tag" onmouseover="this.style.backgroundColor='#e63946'; this.style.borderColor='#e63946'; this.style.transform='translateY(-5px)';" onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)';">PHP / MySQL</span>
+      <span class="skill-tag" onmouseover="this.style.backgroundColor='#e63946'; this.style.borderColor='#e63946'; this.style.transform='translateY(-5px)';" onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)';">C# / .NET</span>
+      <span class="skill-tag" onmouseover="this.style.backgroundColor='#e63946'; this.style.borderColor='#e63946'; this.style.transform='translateY(-5px)';" onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)';">Git / GitHub</span>
     </div>
   </div>
 </section>
 
-<!-- DENEYİM BÖLÜMÜ -->
+<!-- DENEYİM -->
 <section class="section experience-section" id="experience">
   <div class="section-inner reveal-up">
     <h2 class="section-title">Deneyim</h2>
     <div class="experience-list">
-      <div class="experience-item">
+      <div class="experience-item panel">
         <h3>Stajyer Geliştirici</h3>
         <p>Şirket/Okul Adı | 2025- Günümüz</p>
         <p>KAEÜ_ Stajyer Geliştirici/Tasarlama | 2024- Günümüz </p>
         <p>Web projeleri üzerinde çalışma ve teknik destek sağlama.</p>
         <p>Gerekli kurum ve kuruluşlar için afiş/poster tasarlamak.</p>
-        
       </div>
     </div>
   </div>
 </section>
 
-<!-- EĞİTİM BÖLÜMÜ -->
+<!-- EĞİTİM -->
 <section class="section education-section" id="education">
   <div class="section-inner reveal-up">
     <h2 class="section-title">Eğitim</h2>
     <div class="education-list">
-      <div class="education-item">
+      <div class="education-item panel">
         <h3>Bilgisayar Programcılığı</h3>
         <p>KAEÜ TBMYO | 2024 - 2026</p>
         <p>Algoritmalar, Veri Yapıları ve Web Teknolojileri odaklı eğitim.</p>
@@ -187,17 +149,15 @@
   <div class="section-inner">
     <h2 class="section-title">Projelerim</h2>
     <div class="projects-grid">
-      <div class="project-card reveal-up">
+      <div class="project-card reveal-up panel">
         <div class="project-glow"></div>
         <h3>E-Ticaret Sitesi |  Bilgisayar Donanım Parça Alım-Satım</h3>
         <p>Modern bir alışveriş deneyimi.</p>
-          <p> Etkileşim içinde fikir beyan edilerek ürün kalite değerlendirme ve eksik giderilme sitesi.</p>
-         <h3>Portfolyo |  Kendi Hakkımdaki Herşey</h3>
+        <p>Etkileşim içinde fikir beyan edilerek ürün kalite değerlendirme ve eksik giderilme sitesi.</p>
+
+        <h3>Portfolyo |  Kendi Hakkımdaki Herşey</h3>
         <p>Genel bir online CV şablonu benzeri yapılmış bir uygulama</p>
-          <p> Kullanıcı ile etkileşime geçilebilen seçeneklerin sunnulduğu çift taraflı fikir beyan edilme ve kendi gelişimini izleme sitesi .</p>
-        
-        
-        
+        <p>Kullanıcı ile etkileşime geçilebilen seçeneklerin sunulduğu çift taraflı fikir beyan edilme ve kendi gelişimini izleme sitesi.</p>
       </div>
     </div>
   </div>
@@ -215,7 +175,6 @@
     </div>
 
     <form id="contactForm" action="https://formspree.io/f/mgopoqqe" method="POST">
-      <!-- ADIM 1 -->
       <div class="form-step active" data-step="1">
         <div class="field-group">
           <input type="text" name="name" id="name" placeholder="Adınız" required>
@@ -226,13 +185,12 @@
         <button type="button" onclick="nextStep(1)" class="btn-primary">Sonraki</button>
       </div>
 
-      <!-- ADIM 2 -->
       <div class="form-step" data-step="2">
         <div class="field-group">
           <input type="hidden" name="topic" id="topic">
           <div class="pills-container">
             <div class="pill" data-topic="Web Tasarım">Web Tasarım</div>
-            <div class="pill" data-topic="Yazılım">Hakkımda </div>
+            <div class="pill" data-topic="Yazılım">Hakkımda</div>
             <div class="pill" data-topic="Diğer">Diğer</div>
           </div>
         </div>
@@ -245,7 +203,6 @@
         </div>
       </div>
 
-      <!-- ADIM 3 (Özet) -->
       <div class="form-step" data-step="3">
         <div class="summary">
           <p><strong>Ad:</strong> <span id="sumName"></span></p>

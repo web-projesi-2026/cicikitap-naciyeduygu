@@ -4,7 +4,7 @@
    ========================================= */
 
 :root {
-  --bg: #1a1a1a; /* koyu gri */
+  --bg: #1a1a1a; /* gri arka plan */
   --bg2: #111118;
   --surface: #16161f;
   --border: rgba(255,255,255,0.08);
@@ -18,6 +18,7 @@
   --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* ── TEMEL ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; }
@@ -29,7 +30,7 @@ body {
   font-size: 15px;
   line-height: 1.7;
   overflow-x: hidden;
-  cursor: none;
+  cursor: none; /* özel imleç aktif */
 }
 
 /* ── CURSOR ── */
@@ -131,13 +132,17 @@ body {
   opacity: 0.35;
 }
 .hero-content { position: relative; z-index: 2; text-align: center; }
+.hero-tag { margin-bottom: 1rem; }
 .hero-name {
   font-family: var(--font-display);
   font-size: clamp(3rem, 10vw, 7rem);
   font-weight: 900;
-  color: #0b1d3a; /* koyu lacivert */
+  color: #0b1d3a; /* en koyu lacivert */
 }
 .hero-name .italic { font-style: italic; -webkit-text-stroke: 1px var(--text); color: transparent; }
+
+.hero-sub { margin-top: 1rem; color: var(--text-muted); }
+.hero-cta { margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; }
 
 /* ── SECTIONS ── */
 .section { padding: 6rem 0; }
@@ -214,6 +219,7 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .hamburger { display: flex; }

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Responsive meta query: ekran çözünürlüğüne göre davran -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta name="description" content="Naciye Duygu — Proje Görselleri Galerisi">
+  <meta name="theme-color" content="#0a0a0f">
+  <title>Galeri — Naciye Duygu</title>
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ÖZEL İMLEÇ -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-trail" id="cursorTrail"></div>
+
+<!-- ═══ NAV ═══════════════════════════════════════════════════════ -->
+<nav class="nav" id="nav">
+  <div class="nav-logo"><a href="index.html" style="color:inherit;text-decoration:none;">ND<span class="dot">.</span></a></div>
+
+  <ul class="nav-links">
+    <li><a href="index.html#about">Hakkımda</a></li>
+    <li><a href="index.html#skills">Beceriler</a></li>
+    <li><a href="index.html#projects">Projeler</a></li>
+    <li><a href="gallery.html" style="color:#e63946;">Galeri</a></li>
+    <li><a href="ai-chat.html">Yapay Zekaya Sor</a></li>
+    <li><a href="index.html#contact">İletişim</a></li>
+  </ul>
+
+  <div class="hamburger" id="hamburger" aria-label="Menüyü aç/kapat" role="button" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBİL MENÜ -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.html#about"    class="mobile-link">Hakkımda</a></li>
+    <li><a href="index.html#skills"   class="mobile-link">Beceriler</a></li>
+    <li><a href="index.html#projects" class="mobile-link">Projeler</a></li>
+    <li><a href="gallery.html"        class="mobile-link">Galeri</a></li>
+    <li><a href="ai-chat.html"        class="mobile-link">Yapay Zekaya Sor</a></li>
+    <li><a href="index.html#contact"  class="mobile-link">İletişim</a></li>
+  </ul>
+</div>
+
+<!-- ═══ SAYFA BAŞLIĞI ═════════════════════════════════════════════ -->
+<div class="page-header">
+  <div class="breadcrumb">
+    <a href="index.html">Ana Sayfa</a>
+    <span>/</span>
+    <span>Galeri</span>
+  </div>
+  <h1 class="reveal-up">Proje <em style="color:#e63946;">Galerisi</em></h1>
+  <p class="reveal-up">Tasarım çalışmaları, ekran görüntüleri ve proje görselleri.</p>
+</div>
+
+<!-- ═══ FİLTRE BUTONLARI ══════════════════════════════════════════ -->
+<div style="padding: 0 1.5rem; max-width:1100px; margin:0 auto 1.5rem;">
+  <div class="pills-container" id="filterBtns">
+    <div class="pill selected" data-filter="all">Tümü</div>
+    <div class="pill" data-filter="web">Web Tasarım</div>
+    <div class="pill" data-filter="ui">UI / UX</div>
+    <div class="pill" data-filter="code">Kod</div>
+  </div>
+</div>
+
+<!-- ═══ GALERİ IZGARASI ═══════════════════════════════════════════ -->
+<section class="gallery-section">
+  <div class="gallery-grid" id="galleryGrid">
+
+    <!-- Görsel 1 -->
+    <div class="gallery-item reveal-up" data-category="web"
+         onclick="openLightbox('https://images.unsplash.com/photo-1547658719-da2b51169166?w=1200', 'E-Ticaret Arayüzü')">
+      <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80"
+           alt="E-Ticaret Arayüzü" loading="lazy">
+      <div class="gallery-overlay"><span>E-Ticaret Arayüzü</span></div>
+    </div>
+
+    <!-- Görsel 2 -->
+    <div class="gallery-item reveal-up" data-category="ui"
+         onclick="openLightbox('https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200', 'UI Tasarım Çalışması')">
+      <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80"
+           alt="UI Tasarım Çalışması" loading="lazy">
+      <div class="gallery-overlay"><span>UI Tasarım Çalışması</span></div>
+    </div>
+
+    <!-- Görsel 3 -->
+    <div class="gallery-item reveal-up" data-category="code"
+         onclick="openLightbox('https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200', 'Kod Editörü')">
+      <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80"
+           alt="Kod Editörü" loading="lazy">
+      <div class="gallery-overlay"><span>Kod Editörü</span></div>
+    </div>
+
+    <!-- Görsel 4 -->
+    <div class="gallery-item reveal-up" data-category="web"
+         onclick="openLightbox('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200', 'Web Analitik Dashboard')">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80"
+           alt="Web Analitik Dashboard" loading="lazy">
+      <div class="gallery-overlay"><span>Web Analitik Dashboard</span></div>
+    </div>
+
+    <!-- Görsel 5 -->
+    <div class="gallery-item reveal-up" data-category="ui"
+         onclick="openLightbox('https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=1200', 'Mobil Uygulama Tasarımı')">
+      <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&q=80"
+           alt="Mobil Uygulama Tasarımı" loading="lazy">
+      <div class="gallery-overlay"><span>Mobil Uygulama Tasarımı</span></div>
+    </div>
+
+    <!-- Görsel 6 -->
+    <div class="gallery-item reveal-up" data-category="code"
+         onclick="openLightbox('https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=1200', 'Algoritma Çalışması')">
+      <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=600&q=80"
+           alt="Algoritma Çalışması" loading="lazy">
+      <div class="gallery-overlay"><span>Algoritma Çalışması</span></div>
+    </div>
+
+    <!-- Görsel 7 -->
+    <div class="gallery-item reveal-up" data-category="web"
+         onclick="openLightbox('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200', 'Portfolyo Tasarımı')">
+      <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&q=80"
+           alt="Portfolyo Tasarımı" loading="lazy">
+      <div class="gallery-overlay"><span>Portfolyo Tasarımı</span></div>
+    </div>
+
+    <!-- Görsel 8 -->
+    <div class="gallery-item reveal-up" data-category="ui"
+         onclick="openLightbox('https://images.unsplash.com/photo-1558655146-d09347e92766?w=1200', 'Renk Paleti Çalışması')">
+      <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=600&q=80"
+           alt="Renk Paleti Çalışması" loading="lazy">
+      <div class="gallery-overlay"><span>Renk Paleti Çalışması</span></div>
+    </div>
+
+    <!-- Görsel 9 -->
+    <div class="gallery-item reveal-up" data-category="code"
+         onclick="openLightbox('https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=1200', 'Veritabanı Şeması')">
+      <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=600&q=80"
+           alt="Veritabanı Şeması" loading="lazy">
+      <div class="gallery-overlay"><span>Veritabanı Şeması</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ LİGHTBOX ══════════════════════════════════════════════════ -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Kapat">✕</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
+<footer>
+  <nav class="footer-nav">
+    <a href="index.html">Ana Sayfa</a>
+    <a href="gallery.html">Galeri</a>
+    <a href="ai-chat.html">Yapay Zekaya Sor</a>
+    <a href="index.html#contact">İletişim</a>
+  </nav>
+  <p>© 2025 <a href="index.html">Naciye Duygu</a> — Tüm hakları saklıdır.</p>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/gallery.js"></script>
+</body>
+</html>

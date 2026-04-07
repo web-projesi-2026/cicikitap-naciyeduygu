@@ -2,10 +2,13 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Responsive meta query: ekran çözünürlüğüne göre davran -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta name="description" content="Naciye Duygu — Bilgisayar Programcılığı Öğrencisi Portfolyo Sitesi">
+  <meta name="author" content="Naciye Duygu">
+  <meta name="theme-color" content="#0a0a0f">
   <title>Naciye Duygu — Portfolyo</title>
 
-  <!-- CSS Bağlantısı -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
@@ -13,42 +16,47 @@
 
 <body>
 
-<!-- ÖZEL İMLEÇ (JS Beklentisi) -->
+<!-- ÖZEL İMLEÇ -->
 <div class="cursor" id="cursor"></div>
 <div class="cursor-trail" id="cursorTrail"></div>
 
-<!-- NAV -->
+<!-- ═══ NAV ═══════════════════════════════════════════════════════ -->
 <nav class="nav" id="nav">
   <div class="nav-logo">ND<span class="dot">.</span></div>
 
+  <!-- Masaüstü linkleri -->
   <ul class="nav-links">
     <li><a href="#about">Hakkımda</a></li>
     <li><a href="#skills">Beceriler</a></li>
     <li><a href="#experience">Deneyim</a></li>
     <li><a href="#education">Eğitim</a></li>
     <li><a href="#projects">Projeler</a></li>
+    <li><a href="gallery.html">Galeri</a></li>
+    <li><a href="ai-chat.html">Yapay Zekaya Sor</a></li>
     <li><a href="#contact">İletişim</a></li>
   </ul>
 
-  <!-- HAMBURGER (JS Beklentisi) -->
-  <div class="hamburger" id="hamburger">
+  <!-- Hamburger (mobilde görünür) -->
+  <div class="hamburger" id="hamburger" aria-label="Menüyü aç/kapat" role="button" tabindex="0">
     <span></span><span></span><span></span>
   </div>
 </nav>
 
-<!-- MOBİL MENÜ (JS Beklentisi) -->
-<div class="mobile-menu" id="mobileMenu">
+<!-- MOBİL MENÜ -->
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobil menü">
   <ul>
-    <li><a href="#about" class="mobile-link">Hakkımda</a></li>
-    <li><a href="#skills" class="mobile-link">Beceriler</a></li>
-    <li><a href="#experience" class="mobile-link">Deneyim</a></li>
-    <li><a href="#education" class="mobile-link">Eğitim</a></li>
-    <li><a href="#projects" class="mobile-link">Projeler</a></li>
-    <li><a href="#contact" class="mobile-link">İletişim</a></li>
+    <li><a href="#about"        class="mobile-link">Hakkımda</a></li>
+    <li><a href="#skills"       class="mobile-link">Beceriler</a></li>
+    <li><a href="#experience"   class="mobile-link">Deneyim</a></li>
+    <li><a href="#education"    class="mobile-link">Eğitim</a></li>
+    <li><a href="#projects"     class="mobile-link">Projeler</a></li>
+    <li><a href="gallery.html"  class="mobile-link">Galeri</a></li>
+    <li><a href="ai-chat.html"  class="mobile-link">Yapay Zekaya Sor</a></li>
+    <li><a href="#contact"      class="mobile-link">İletişim</a></li>
   </ul>
 </div>
 
-<!-- HERO -->
+<!-- ═══ HERO ══════════════════════════════════════════════════════ -->
 <section class="hero" id="hero">
   <canvas id="bgCanvas"></canvas>
   <div class="noise-overlay"></div>
@@ -62,29 +70,26 @@
     </h1>
 
     <p class="hero-sub">
-      Her bir kod parçası geleceğime saçılan bir tutam ışık.<br/>     
+      Her bir kod parçası geleceğime saçılan bir tutam ışık.
     </p>
 
     <div class="hero-cta">
       <a href="#projects" class="btn-primary">Projeleri Gör</a>
-      <a href="#contact" class="btn-ghost">İletişime Geç</a>
+      <a href="ai-chat.html" class="btn-ghost">Yapay Zekaya Sor ✦</a>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ═══ HAKKIMDA ═══════════════════════════════════════════════════ -->
 <section class="section about-section" id="about">
   <div class="section-inner reveal-up">
     <h2 class="section-title">Merhaba, ben <em>Naciye Duygu</em></h2>
     <p class="about-desc">
-      Bilgisayar programcılığı öğrencisiyim. 
-      <br>
-      Çevremdeki genel sorunları gözlemleyip bu sorunlar için fikir ve proje geliştirmeyi severim.
-      <br>
-      Düşünmek,tasarlamak ve soyut-somut örneklerle gözlem yapmak en sevdiğim aktivitelerdir.
-      <br>
+      Bilgisayar programcılığı öğrencisiyim.<br>
+      Çevremdeki genel sorunları gözlemleyip bu sorunlar için fikir ve proje geliştirmeyi severim.<br>
+      Düşünmek, tasarlamak ve soyut-somut örneklerle gözlem yapmak en sevdiğim aktivitelerdir.
     </p>
-    
+
     <div class="about-stats">
       <div class="stat">
         <span class="stat-num" data-target="20">0</span>
@@ -98,108 +103,96 @@
   </div>
 </section>
 
-<!-- BECERİLER BÖLÜMÜ -->
+<!-- ═══ BECERİLER ═════════════════════════════════════════════════ -->
 <section class="section skills-section" id="skills">
   <div class="section-inner reveal-up">
     <h2 class="section-title">Beceriler</h2>
-    <div class="skills-container" style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 30px;">
-      
-      <!-- Her bir beceri etiketi -->
-      <span class="skill-tag" 
-            style="padding: 10px 25px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; cursor: pointer; transition: all 0.3s ease; display: inline-block; font-family: 'JetBrains Mono', monospace;"
-            onmouseover="this.style.backgroundColor='#e63946'; this.style.borderColor='#e63946'; this.style.transform='translateY(-5px)';"
-            onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)';">
-        HTML5
-      </span>
-
-      <span class="skill-tag" 
-            style="padding: 10px 25px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; cursor: pointer; transition: all 0.3s ease; display: inline-block; font-family: 'JetBrains Mono', monospace;"
-            onmouseover="this.style.backgroundColor='#e63946'; this.style.borderColor='#e63946'; this.style.transform='translateY(-5px)';"
-            onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)';">
-        CSS3 / Tailwind
-      </span>
-
-      <span class="skill-tag" 
-            style="padding: 10px 25px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; cursor: pointer; transition: all 0.3s ease; display: inline-block; font-family: 'JetBrains Mono', monospace;"
-            onmouseover="this.style.backgroundColor='#e63946'; this.style.borderColor='#e63946'; this.style.transform='translateY(-5px)';"
-            onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)';">
-        JavaScript
-      </span>
-
-      <span class="skill-tag" 
-            style="padding: 10px 25px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; cursor: pointer; transition: all 0.3s ease; display: inline-block; font-family: 'JetBrains Mono', monospace;"
-            onmouseover="this.style.backgroundColor='#e63946'; this.style.borderColor='#e63946'; this.style.transform='translateY(-5px)';"
-            onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)';">
-        PHP / MySQL
-      </span>
-
-      <span class="skill-tag" 
-            style="padding: 10px 25px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; cursor: pointer; transition: all 0.3s ease; display: inline-block; font-family: 'JetBrains Mono', monospace;"
-            onmouseover="this.style.backgroundColor='#e63946'; this.style.borderColor='#e63946'; this.style.transform='translateY(-5px)';"
-            onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)';">
-        C# / .NET
-      </span>
-
-      <span class="skill-tag" 
-            style="padding: 10px 25px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; cursor: pointer; transition: all 0.3s ease; display: inline-block; font-family: 'JetBrains Mono', monospace;"
-            onmouseover="this.style.backgroundColor='#e63946'; this.style.borderColor='#e63946'; this.style.transform='translateY(-5px)';"
-            onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)';">
-        Git / GitHub
-      </span>
-
+    <div class="skills-container">
+      <span class="skill-tag">HTML5</span>
+      <span class="skill-tag">CSS3 / Tailwind</span>
+      <span class="skill-tag">JavaScript</span>
+      <span class="skill-tag">PHP / MySQL</span>
+      <span class="skill-tag">C# / .NET</span>
+      <span class="skill-tag">Git / GitHub</span>
+      <span class="skill-tag">Responsive Tasarım</span>
+      <span class="skill-tag">UI / UX</span>
     </div>
   </div>
 </section>
 
-<!-- DENEYİM BÖLÜMÜ -->
+<!-- ═══ DENEYİM ═══════════════════════════════════════════════════ -->
 <section class="section experience-section" id="experience">
   <div class="section-inner reveal-up">
     <h2 class="section-title">Deneyim</h2>
     <div class="experience-list">
       <div class="experience-item">
         <h3>Stajyer Geliştirici</h3>
-        <p>Şirket/Okul Adı | 2025- Günümüz</p>
-        <p>KAEÜ_ Stajyer Geliştirici/Tasarlama | 2024- Günümüz </p>
+        <p>Şirket/Okul Adı | 2025 — Günümüz</p>
+        <p>KAEÜ — Stajyer Geliştirici / Tasarlama | 2024 — Günümüz</p>
         <p>Web projeleri üzerinde çalışma ve teknik destek sağlama.</p>
-        <p>Gerekli kurum ve kuruluşlar için afiş/poster tasarlamak.</p>
+        <p>Gerekli kurum ve kuruluşlar için afiş / poster tasarlamak.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EĞİTİM BÖLÜMÜ -->
+<!-- ═══ EĞİTİM ════════════════════════════════════════════════════ -->
 <section class="section education-section" id="education">
   <div class="section-inner reveal-up">
     <h2 class="section-title">Eğitim</h2>
     <div class="education-list">
       <div class="education-item">
         <h3>Bilgisayar Programcılığı</h3>
-        <p>KAEÜ TBMYO | 2024 - 2026</p>
+        <p>KAEÜ TBMYO | 2024 — 2026</p>
         <p>Algoritmalar, Veri Yapıları ve Web Teknolojileri odaklı eğitim.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- ═══ PROJELER ══════════════════════════════════════════════════ -->
 <section class="section projects-section" id="projects">
   <div class="section-inner">
     <h2 class="section-title">Projelerim</h2>
     <div class="projects-grid">
+
       <div class="project-card reveal-up">
         <div class="project-glow"></div>
-        <h3>E-Ticaret Sitesi |  Bilgisayar Donanım Parça Alım-Satım</h3>
-        <p>Modern bir alışveriş deneyimi.</p>
-        <p> Etkileşim içinde fikir beyan edilerek ürün kalite değerlendirme ve eksik giderilme sitesi.</p>
-        <h3>Portfolyo |  Kendi Hakkımdaki Herşey</h3>
-        <p>Genel bir online CV şablonu benzeri yapılmış bir uygulama</p>
-        <p> Kullanıcı ile etkileşime geçilebilen seçeneklerin sunulduğu çift taraflı fikir beyan edilme ve kendi gelişimini izleme sitesi.</p>
+        <h3>E-Ticaret Sitesi</h3>
+        <p>Bilgisayar Donanım Parça Alım-Satım platformu. Modern bir alışveriş deneyimi.</p>
+        <p>Etkileşim içinde fikir beyan edilerek ürün kalite değerlendirme ve eksik giderilme sitesi.</p>
+        <div class="project-links">
+          <a href="#" class="project-link">GitHub</a>
+          <a href="#" class="project-link">Demo</a>
+        </div>
       </div>
+
+      <div class="project-card reveal-up">
+        <div class="project-glow"></div>
+        <h3>Portfolyo Sitesi</h3>
+        <p>Kendi hakkımdaki her şeyi içeren online CV şablonu benzeri uygulama.</p>
+        <p>Kullanıcı ile etkileşime geçilebilen seçeneklerin sunulduğu çift taraflı fikir beyan sitesi.</p>
+        <div class="project-links">
+          <a href="https://github.com" class="project-link">GitHub</a>
+          <a href="gallery.html" class="project-link">Galeri</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal-up">
+        <div class="project-glow"></div>
+        <h3>Yapay Zeka Asistan</h3>
+        <p>Bu portfolyo sitesine entegre edilmiş AI sohbet özelliği.</p>
+        <p>Ziyaretçiler Naciye Duygu hakkında sorular sorabilir, anlık yanıt alabilir.</p>
+        <div class="project-links">
+          <a href="ai-chat.html" class="project-link">Dene →</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ═══ İLETİŞİM ══════════════════════════════════════════════════ -->
 <section class="section contact-section" id="contact">
   <div class="section-inner reveal-up">
     <h2 class="section-title">İletişim</h2>
@@ -228,7 +221,7 @@
           <input type="hidden" name="topic" id="topic">
           <div class="pills-container">
             <div class="pill" data-topic="Web Tasarım">Web Tasarım</div>
-            <div class="pill" data-topic="Yazılım">Hakkımda </div>
+            <div class="pill" data-topic="Hakkımda">Hakkımda</div>
             <div class="pill" data-topic="Diğer">Diğer</div>
           </div>
         </div>
@@ -256,16 +249,25 @@
       </div>
     </form>
 
-    <div id="formSuccess" class="form-success">
-      <h3>Mesaj Gönderildi!</h3>
+    <div id="formSuccess">
+      <h3>Mesajınız İletildi ✓</h3>
       <p>En kısa sürede dönüş yapacağım.</p>
-      <button onclick="resetForm()" class="btn-ghost">Yeni Mesaj</button>
+      <button onclick="resetForm()" class="btn-ghost" style="margin-top:1.5rem">Yeni Mesaj</button>
     </div>
   </div>
 </section>
 
-<!-- JS Bağlantısı -->
-<script src="assets/js/app.js"></script>
+<!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
+<footer>
+  <nav class="footer-nav">
+    <a href="index.html">Ana Sayfa</a>
+    <a href="gallery.html">Galeri</a>
+    <a href="ai-chat.html">Yapay Zekaya Sor</a>
+    <a href="#contact">İletişim</a>
+  </nav>
+  <p>© 2025 <a href="#">Naciye Duygu</a> — Tüm hakları saklıdır.</p>
+</footer>
+
+<script src="assets/js/main.js"></script>
 </body>
 </html>
-(html)

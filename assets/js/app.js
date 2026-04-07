@@ -115,6 +115,23 @@ if (canvas) {
     }
   }
 
+   function askAI(){
+  const input = document.getElementById("aiInput").value.toLowerCase();
+  const output = document.getElementById("aiResponse");
+
+  if(input.includes("merhaba")){
+    output.innerText="Merhaba 👋";
+  }
+  else if(input.includes("proje")){
+    output.innerText="Yeni bir portfolyo projesi yapabilirsin.";
+  }
+  else if(input.includes("cv")){
+    output.innerText="Projelerini ve becerilerini detaylandır.";
+  }
+  else{
+    output.innerText="Bu soruya cevap öğreniyorum...";
+  }
+}
   function animateParticles() {
     ctx.clearRect(0, 0, W, H);
     particles.forEach(p => { p.update(); p.draw(); });

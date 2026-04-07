@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Responsive meta query: ekran çözünürlüğüne göre davran -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta name="description" content="Naciye Duygu hakkında yapay zekaya sor — AI destekli sohbet">
+  <meta name="theme-color" content="#0a0a0f">
+  <title>Yapay Zekaya Sor — Naciye Duygu</title>
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ÖZEL İMLEÇ -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-trail" id="cursorTrail"></div>
+
+<!-- ═══ NAV ═══════════════════════════════════════════════════════ -->
+<nav class="nav" id="nav">
+  <div class="nav-logo"><a href="index.html" style="color:inherit;text-decoration:none;">ND<span class="dot">.</span></a></div>
+
+  <ul class="nav-links">
+    <li><a href="index.html#about">Hakkımda</a></li>
+    <li><a href="index.html#skills">Beceriler</a></li>
+    <li><a href="index.html#projects">Projeler</a></li>
+    <li><a href="gallery.html">Galeri</a></li>
+    <li><a href="ai-chat.html" style="color:#e63946;">Yapay Zekaya Sor</a></li>
+    <li><a href="index.html#contact">İletişim</a></li>
+  </ul>
+
+  <div class="hamburger" id="hamburger" aria-label="Menüyü aç/kapat" role="button" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBİL MENÜ -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.html#about"    class="mobile-link">Hakkımda</a></li>
+    <li><a href="index.html#skills"   class="mobile-link">Beceriler</a></li>
+    <li><a href="index.html#projects" class="mobile-link">Projeler</a></li>
+    <li><a href="gallery.html"        class="mobile-link">Galeri</a></li>
+    <li><a href="ai-chat.html"        class="mobile-link">Yapay Zekaya Sor</a></li>
+    <li><a href="index.html#contact"  class="mobile-link">İletişim</a></li>
+  </ul>
+</div>
+
+<!-- ═══ SAYFA BAŞLIĞI ═════════════════════════════════════════════ -->
+<div class="page-header">
+  <div class="breadcrumb">
+    <a href="index.html">Ana Sayfa</a>
+    <span>/</span>
+    <span>Yapay Zekaya Sor</span>
+  </div>
+  <h1 class="reveal-up">Yapay Zekaya <em style="color:#e63946;">Sor</em></h1>
+  <p class="reveal-up">Naciye Duygu hakkında merak ettiğiniz her şeyi sorun.</p>
+</div>
+
+<!-- ═══ AI CHAT BÖLÜMÜ ════════════════════════════════════════════ -->
+<section class="ai-chat-section">
+
+  <div class="chat-container">
+
+    <!-- Bilgi bandı -->
+    <div class="chat-info-banner">
+      <strong>✦ AI Asistan</strong> — Bu asistan Naciye Duygu'nun portfolyosu, becerileri, projeleri ve eğitimi hakkında bilgi verebilir. Sorularınızı Türkçe veya İngilizce sorabilirsiniz.
+    </div>
+
+    <!-- Öneri chip'leri -->
+    <div class="chat-suggestions" id="chatSuggestions">
+      <div class="suggestion-chip" onclick="sendSuggestion(this)">Hangi dilleri biliyor?</div>
+      <div class="suggestion-chip" onclick="sendSuggestion(this)">Projeleri neler?</div>
+      <div class="suggestion-chip" onclick="sendSuggestion(this)">Nerede okuyor?</div>
+      <div class="suggestion-chip" onclick="sendSuggestion(this)">İletişime nasıl geçebilirim?</div>
+    </div>
+
+    <!-- Mesaj alanı -->
+    <div class="chat-messages" id="chatMessages">
+      <!-- Karşılama mesajı -->
+      <div class="chat-msg ai">
+        <div class="chat-avatar">AI</div>
+        <div class="chat-bubble">
+          Merhaba! Ben Naciye Duygu'nun AI asistanıyım. 👋<br><br>
+          Portfolyo, beceriler, projeler veya eğitim hakkında merak ettiğiniz her şeyi sorabilirsiniz.
+        </div>
+      </div>
+    </div>
+
+    <!-- Giriş alanı -->
+    <div class="chat-input-area">
+      <textarea
+        id="chatInput"
+        placeholder="Sorunuzu yazın... (Enter ile gönder)"
+        rows="1"
+        onkeydown="handleChatKey(event)"
+        oninput="autoResize(this)"
+      ></textarea>
+      <button class="chat-send-btn" id="chatSendBtn" onclick="sendMessage()" aria-label="Gönder">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+        </svg>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
+<footer>
+  <nav class="footer-nav">
+    <a href="index.html">Ana Sayfa</a>
+    <a href="gallery.html">Galeri</a>
+    <a href="ai-chat.html">Yapay Zekaya Sor</a>
+    <a href="index.html#contact">İletişim</a>
+  </nav>
+  <p>© 2025 <a href="index.html">Naciye Duygu</a> — Tüm hakları saklıdır.</p>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/ai-chat.js"></script>
+</body>
+</html>

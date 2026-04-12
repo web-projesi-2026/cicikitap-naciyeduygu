@@ -8,7 +8,7 @@ if (hamburger) {
     });
 }
 
-// Kedi Arka Plain Animasyonu Oluşturucu
+// Kedi Arka Plan Animasyonu
 function createFloatingCats() {
     const catBg = document.getElementById('cat-bg');
     if (!catBg) return;
@@ -30,28 +30,55 @@ function createFloatingCats() {
     }
 }
 
-// Sepet Sistemi
-let cart = JSON.parse(localStorage.getItem('cici-cart')) || [];
-
-function toggleCart() {
-    const modal = document.getElementById('cart-modal');
+// Modal Yönetimi (Giriş, Kayıt, Sepet, Kargo)
+function toggleModal(modalId) {
+    const modal = document.getElementById(modalId);
     if (modal) {
         modal.classList.toggle('active');
+        // Kargo modalı açıldığında sonucu temizle
+        if (modalId === 'tracking-modal' && !modal.classList.contains('active')) {
+            const result = document.getElementById('modal-tracking-result');
+            const input = document.getElementById('modal-tracking-input');
+            if (result) result.innerText = "";
+            if (input) input.value = "";
+        }
     }
 }
 
-// Herhangi bir yere tıklandığında sepeti kapat
+// Boş yere tıklandığında modalları kapat
 window.addEventListener('click', (e) => {
-    const modal = document.getElementById('cart-modal');
-    const cartBtn = document.querySelector('button[onclick="toggleCart()"]');
-    
-    if (modal && modal.classList.contains('active')) {
-        // Tıklanan yer modalın içi değilse ve açma butonu değilse kapat
-        if (!modal.contains(e.target) && e.target !== cartBtn && (!cartBtn || !cartBtn.contains(e.target))) {
-            modal.classList.remove('active');
+    const modals = document.querySelectorAll('.modal');
+    modals.forEach(modal => {
+        if (modal.classList.contains('active')) {
+            const isClickInside = modal.contains(e.target);
+            const isClickOnButton = e.target.closest('button') && 
+                                   (e.target.closest('button').getAttribute('onclick')?.includes(modal.id));
+            
+            if (!isClickInside && !isClickOnButton) {
+                modal.classList.remove('active');
+            }
         }
-    }
+    });
 });
+
+// Kargo Takip Modal Fonksiyonu
+function trackOrderModal() {
+    const input = document.getElementById('modal-tracking-input');
+    const result = document.getElementById('modal-tracking-result');
+    if (!input || !result) return;
+    
+    const no = input.value.trim();
+    if (no === "") {
+        result.innerText = "Lütfen bir kargo numarası girin.";
+        result.style.color = "red";
+    } else {
+        result.innerText = `📦 ${no} numaralı kargonuz yolda! Çiçi kuryemiz hızla getiriyor. 🐾`;
+        result.style.color = "#aaaaaa";
+    }
+}
+
+// Sepet Sistemi
+let cart = JSON.parse(localStorage.getItem('cici-cart')) || [];
 
 function updateCartUI() {
     const cartList = document.getElementById('cart-items-list');
@@ -63,8 +90,8 @@ function updateCartUI() {
 
     if (cart.length === 0) {
         cartList.innerHTML = '<p style="text-align:center; color:#aaa;">Sepetiniz henüz boş. 🐾</p>';
-        cartCount.innerText = "0";
-        cartFooter.style.display = 'none';
+        if (cartCount) cartCount.innerText = "0";
+        if (cartFooter) cartFooter.style.display = 'none';
     } else {
         cartList.innerHTML = "";
         let total = 0;
@@ -84,9 +111,9 @@ function updateCartUI() {
                 </div>
             `;
         });
-        cartCount.innerText = cart.length;
-        cartTotal.innerText = total.toFixed(2) + " TL";
-        cartFooter.style.display = 'block';
+        if (cartCount) cartCount.innerText = cart.length;
+        if (cartTotal) cartTotal.innerText = total.toFixed(2) + " TL";
+        if (cartFooter) cartFooter.style.display = 'block';
     }
     localStorage.setItem('cici-cart', JSON.stringify(cart));
 }
@@ -94,9 +121,7 @@ function updateCartUI() {
 function addToCart(title, price, img) {
     cart.push({ title, price, img });
     updateCartUI();
-    // Sepeti otomatik aç
-    const modal = document.getElementById('cart-modal');
-    if (modal) modal.classList.add('active');
+    toggleModal('cart-modal');
 }
 
 function removeFromCart(index) {
@@ -106,42 +131,16 @@ function removeFromCart(index) {
 
 function completeOrder() {
     if (cart.length === 0) return;
-    
-    // Sepeti temizle
     cart = [];
     updateCartUI();
-    
-    const modal = document.getElementById('cart-modal');
-    if (modal) modal.classList.remove('active');
-
-    // Teşekkür ekranını göster
+    toggleModal('cart-modal');
     const overlay = document.getElementById('thanks-overlay');
-    if (overlay) {
-        overlay.classList.add('active');
-    }
+    if (overlay) overlay.classList.add('active');
 }
 
 function closeThanks() {
     const overlay = document.getElementById('thanks-overlay');
-    if (overlay) {
-        overlay.classList.remove('active');
-    }
-}
-
-// Kargo Takip Sistemi
-function trackOrder() {
-    const input = document.getElementById('tracking-input');
-    const result = document.getElementById('tracking-result');
-    if (!input || !result) return;
-
-    const no = input.value.trim();
-    if (no === "") {
-        result.innerText = "Lütfen bir kargo numarası girin.";
-        result.style.color = "red";
-    } else {
-        result.innerText = `📦 ${no} numaralı kargonuz yolda! Çiçi kuryemiz hızla getiriyor.`;
-        result.style.color = "#aaaaaa";
-    }
+    if (overlay) overlay.classList.remove('active');
 }
 
 // Sayfa Yüklendiğinde
@@ -149,7 +148,6 @@ window.addEventListener('DOMContentLoaded', () => {
     createFloatingCats();
     updateCartUI();
     
-    // Öne Çıkan Kitaplar (index.html için)
     const featuredGrid = document.getElementById('featured-books');
     if (featuredGrid) {
         const sampleBooks = [

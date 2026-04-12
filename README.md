@@ -1,12 +1,12 @@
-# Naciye Duygu — Kişisel Portfolyo
+# Naciye Duygu — Çiçi Kitap
 
 Saf HTML, CSS ve JavaScript ile geliştirilmiş, modern ve etkileşimli kişisel portfolyo sitesi.
 
----
+
 
 ## 📁 Proje Yapısı
 
-```
+
 web_portfolio_naciyeduygu/
 ├── index.html          # Ana sayfa
 ├── README.md           # Bu dosya
@@ -20,9 +20,7 @@ web_portfolio_naciyeduygu/
     ├── img/            # Resimler ve diğer medya dosyaları
     └── js/
         └── app.js      # Ana JavaScript dosyası
-```
 
----
 
 ## 🚀 Kullanılan Teknolojiler
 
@@ -45,15 +43,15 @@ git clone https://github.com/web-projesi-2026/web_portfolio_naciyeduygu.git
 
 **Proje Dizinine Gidin**
 
-```
+
 cd web_portfolio_naciyeduygu
-```
+
 
 **Tarayıcınızda Açın**
 
-```
+
 index.html
-```
+
 
 ---
 

@@ -1,100 +1,57 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galeri — Naciye Duygu</title>
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=JetBrains+Mono&display=swap" rel="stylesheet">
-  <style>
-    .gallery-section {
-      padding-top: 150px;
-      min-height: 100vh;
-    }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
-      padding: 2rem 5%;
-    }
-    .gallery-card {
-      position: relative;
-      height: 400px;
-      background: var(--bg-card);
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid var(--glass-border);
-      transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    .gallery-card:hover {
-      transform: scale(1.05);
-      border-color: var(--accent-primary);
-    }
-    .gallery-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.7;
-      transition: 0.4s;
-    }
-    .gallery-card:hover .gallery-img {
-      opacity: 1;
-    }
-    .gallery-info {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      padding: 1.5rem;
-      background: linear-gradient(transparent, rgba(10, 10, 15, 0.9));
-      color: white;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitaplarımız | Çiçi Kitap</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <nav class="nav">
-    <div class="nav-logo">ND<span class="dot">.</span></div>
-    <ul class="nav-links">
-      <li><a href="../index.html">Ana Sayfa</a></li>
-      <li><a href="ai-chat.html">Yapay Zekaya Sor</a></li>
-      <li><a href="contact.html">İletişim</a></li>
-    </ul>
-  </nav>
+    <div class="cat-bg" id="cat-bg"></div>
 
-  <section class="gallery-section">
-    <h1 class="section-title">Görsel Portfolyo</h1>
-    <div class="gallery-grid">
-      <!-- Örnek Kartlar -->
-      <div class="gallery-card">
-        <div class="gallery-img" style="background: linear-gradient(45deg, #1e293b, #6366f1);"></div>
-        <div class="gallery-info">
-          <h3>Web Tasarım Projesi</h3>
-          <p>Kullanıcı Deneyimi ve Arayüz Tasarımı</p>
+    <nav>
+        <a href="../index.html" class="logo">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/cat.png" alt="Çiçi Kitap Logo">
+            Çiçi Kitap
+        </a>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="../index.html">Ana Sayfa</a></li>
+            <li><a href="about.html">Hakkımızda</a></li>
+            <li><a href="gallery.html">Kitaplarımız</a></li>
+            <li><a href="contact.html">Geri Dönüşleriniz</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <a href="#" class="btn btn-secondary"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span></a>
         </div>
-      </div>
-      <div class="gallery-card">
-        <div class="gallery-img" style="background: linear-gradient(45deg, #312e81, #a855f7);"></div>
-        <div class="gallery-info">
-          <h3>Mobil Uygulama Arayüzü</h3>
-          <p>React Native ile Geliştirilen Uygulama</p>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-      </div>
-      <div class="gallery-card">
-        <div class="gallery-img" style="background: linear-gradient(45deg, #1e1b4b, #6366f1);"></div>
-        <div class="gallery-info">
-          <h3>Logo Tasarımı</h3>
-          <p>Marka Kimliği Çalışması</p>
-        </div>
-      </div>
-      <!-- Daha fazla kart eklenebilir -->
-    </div>
-  </section>
+    </nav>
 
-  <footer>
-    <p>© 2025 Naciye Duygu — Tüm hakları saklıdır.</p>
-  </footer>
+    <main class="container">
+        <h1 class="section-title">Kitap Koleksiyonumuz</h1>
+        
+        <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 30px; flex-wrap: wrap;">
+            <button class="btn btn-secondary filter-btn" onclick="filterBooks('all')">Hepsi</button>
+            <button class="btn btn-secondary filter-btn" onclick="filterBooks('dunya')">Dünya Klasikleri</button>
+            <button class="btn btn-secondary filter-btn" onclick="filterBooks('turk')">Türk Klasikleri</button>
+            <button class="btn btn-secondary filter-btn" onclick="filterBooks('roman')">Roman</button>
+            <button class="btn btn-secondary filter-btn" onclick="filterBooks('siir')">Şiir</button>
+        </div>
 
-  <script src="../assets/js/app.js"></script>
+        <div class="book-grid" id="gallery-grid">
+            <!-- JavaScript ile 20 kitap buraya gelecek -->
+        </div>
+    </main>
+
+    <footer style="text-align: center; padding: 2rem; background: #000; margin-top: 50px;">
+        <p>&copy; 2026 Çiçi Kitap - Kitap Dostu Kediler 🐾</p>
+    </footer>
+
+    <script src="../assets/js/gallery.js"></script>
+    <script src="../assets/js/app.js"></script>
 </body>
 </html>

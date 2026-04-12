@@ -1,1 +1,69 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yazar Eserleri | Çiçi Kitap</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="cat-bg" id="cat-bg"></div>
+
+    <nav>
+        <a href="../index.html" class="logo">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/cat.png" alt="Çiçi Kitap Logo">
+            Çiçi Kitap
+        </a>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="../index.html">Ana Sayfa</a></li>
+            <li><a href="gallery.html">Kitaplarımız</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <a href="#" class="btn btn-secondary"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span></a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1 class="section-title" id="author-name">Yazarın Eserleri</h1>
+        <div class="book-grid" id="author-books">
+            <!-- JavaScript ile yazarın kitapları buraya gelecek -->
+        </div>
+    </main>
+
+    <footer style="text-align: center; padding: 2rem; background: #000; margin-top: 50px;">
+        <p>&copy; 2026 Çiçi Kitap 🐾</p>
+    </footer>
+
+    <script src="../assets/js/app.js"></script>
+    <script>
+        // Sayfa yüklendiğinde URL'den yazar ismini alıp eserlerini listeleme simülasyonu
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const author = urlParams.get('author') || 'Bilinmeyen Yazar';
+            document.getElementById('author-name').innerText = author + " Eserleri";
+            
+            const authorBooks = [
+                { title: author + " - Eser 1", price: "45.00 TL", img: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400" },
+                { title: author + " - Eser 2", price: "55.00 TL", img: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400" },
+                { title: author + " - Eser 3", price: "60.00 TL", img: "https://images.unsplash.com/photo-1589998059171-988d887df646?w=400" }
+            ];
+
+            const grid = document.getElementById('author-books');
+            if(grid) {
+                authorBooks.forEach(book => {
+                    grid.innerHTML += `
+                        <div class="book-card">
+                            <img src="${book.img}" alt="${book.title}">
+                            <h3>${book.title}</h3>
+                            <p>${book.price}</p>
+                            <button class="btn btn-primary" onclick="addToCart()">Sepete Ekle</button>
+                        </div>
+                    `;
+                });
+            }
+        });
+    </script>
+</body>
+</html>
 

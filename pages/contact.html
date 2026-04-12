@@ -6,14 +6,6 @@
     <title>Geri Dönüşleriniz | Çiçi Kitap</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head><!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geri Dönüşleriniz | Çiçi Kitap</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="mama-banner">
@@ -23,7 +15,7 @@
 
     <nav>
         <a href="../index.html" class="logo">
-            <img src="https://img.icons8.com/ios-filled/50/ffffff/cat.png" alt="Çiçi Kitap Logo">
+            <img src="../assets/logo-3d.png" alt="Çiçi Kitap 3D Logo">
             Çiçi Kitap
         </a>
         <ul class="nav-links" id="nav-links">
@@ -34,7 +26,12 @@
             <li><a href="compare.html">Fiyat Karşılaştır</a></li>
         </ul>
         <div class="auth-buttons">
-            <button class="btn btn-secondary" onclick="toggleCart()">
+            <button class="btn btn-secondary" onclick="toggleModal('tracking-modal')">
+                <i class="fas fa-truck"></i> Kargo Takip
+            </button>
+            <button class="btn btn-secondary" onclick="toggleModal('login-modal')">Giriş Yap</button>
+            <button class="btn btn-primary" onclick="toggleModal('register-modal')">Kayıt Ol</button>
+            <button class="btn btn-secondary" onclick="toggleModal('cart-modal')">
                 <i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span>
             </button>
         </div>
@@ -45,91 +42,52 @@
         </div>
     </nav>
 
-    <!-- Sepet Modalı -->
-    <div id="cart-modal" class="cart-modal">
-        <div class="cart-modal-header">
-            <h3>Sepetim 🐾</h3>
-            <span class="close-cart" onclick="toggleCart()">&times;</span>
+    <!-- Kargo Takip Modalı -->
+    <div id="tracking-modal" class="modal">
+        <div class="modal-header">
+            <h3>Kargo Sorgulama 🐾</h3>
+            <span class="modal-close" onclick="toggleModal('tracking-modal')">&times;</span>
         </div>
-        <div id="cart-items-list" class="cart-items-list">
-            <p style="text-align:center; color:#aaa;">Sepetiniz henüz boş.</p>
-        </div>
-        <div id="cart-footer" style="display:none;">
-            <div style="display:flex; justify-content:space-between; margin-bottom:15px; font-weight:bold;">
-                <span>Toplam:</span>
-                <span id="cart-total">0.00 TL</span>
-            </div>
-            <button class="btn btn-primary" style="width:100%;" onclick="completeOrder()">Siparişi Tamamla</button>
+        <div class="auth-form">
+            <p style="margin-bottom: 15px; font-size: 0.9rem; color: #aaa;">Kargo durumunuzu öğrenmek için takip numaranızı girin.</p>
+            <input type="text" id="modal-tracking-input" placeholder="Kargo No: örn. 123456789">
+            <button onclick="trackOrderModal()">Sorgula</button>
+            <div id="modal-tracking-result" style="margin-top: 15px; font-weight: bold; text-align: center;"></div>
         </div>
     </div>
 
-    <main class="container">
-        <h1 class="section-title">Geri Dönüşleriniz</h1>
-        <div style="max-width: 600px; margin: 0 auto; background: var(--secondary-color); padding: 30px; border-radius: 10px; border: 1px solid var(--accent-color);">
-            <form id="contact-form" onsubmit="event.preventDefault(); document.getElementById('contact-form').style.display = 'none'; document.getElementById('feedback-msg').style.display = 'block';">
-                <div style="margin-bottom: 15px;">
-                    <label>Adınız:</label><br>
-                    <input type="text" style="width: 100%; padding: 10px; border-radius: 5px; border: none; margin-top: 5px;" required>
-                </div>
-                <div style="margin-bottom: 15px;">
-                    <label>E-posta:</label><br>
-                    <input type="email" style="width: 100%; padding: 10px; border-radius: 5px; border: none; margin-top: 5px;" required>
-                </div>
-                <div style="margin-bottom: 15px;">
-                    <label>Mesajınız:</label><br>
-                    <textarea rows="5" style="width: 100%; padding: 10px; border-radius: 5px; border: none; margin-top: 5px;" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Gönder 🐾</button>
-            </form>
-            <div id="feedback-msg" style="margin-top: 20px; text-align: center; color: var(--accent-color); display: none;">
-                Mesajınız Çiçi'ye ulaştı! Teşekkür ederiz.
-            </div>
+    <!-- Giriş Modalı -->
+    <div id="login-modal" class="modal">
+        <div class="modal-header">
+            <h3>Giriş Yap 🐾</h3>
+            <span class="modal-close" onclick="toggleModal('login-modal')">&times;</span>
         </div>
-    </main>
-
-    <footer style="text-align: center; padding: 2rem; background: #000; margin-top: 50px;">
-        <p>&copy; 2026 Çiçi Kitap 🐾</p>
-    </footer>
-
-    <script src="../assets/js/app.js"></script>
-</body>
-</html>
-
-<body>
-    <div class="mama-banner">
-        <p>🐾 Her kitap siparişinin %25'i hayvanseverlerden sokak dostlarımıza mama ikramı olarak bağışlanmaktadır! 🐾 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 🐾 Her kitap siparişinin %25'i hayvanseverlerden sokak dostlarımıza mama ikramı olarak bağışlanmaktadır! 🐾</p>   
+        <form class="auth-form" onsubmit="event.preventDefault(); alert('Giriş başarılı! Hoş geldin 🐾'); toggleModal('login-modal');">
+            <input type="email" placeholder="E-posta" required>
+            <input type="password" placeholder="Şifre" required>
+            <button type="submit">Giriş Yap</button>
+        </form>
     </div>
-    <div class="cat-bg" id="cat-bg"></div>
 
-    <nav>
-        <a href="../index.html" class="logo">
-            <img src="https://img.icons8.com/ios-filled/50/ffffff/cat.png" alt="Çiçi Kitap Logo">
-            Çiçi Kitap
-        </a>
-        <ul class="nav-links" id="nav-links">
-            <li><a href="../index.html">Ana Sayfa</a></li>
-            <li><a href="about.html">Hakkımızda</a></li>
-            <li><a href="gallery.html">Kitaplarımız</a></li>
-            <li><a href="contact.html">Geri Dönüşleriniz</a></li>
-            <li><a href="compare.html">Fiyat Karşılaştır</a></li>
-        </ul>
-        <div class="auth-buttons">
-            <button class="btn btn-secondary" onclick="toggleCart()">
-                <i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span>
-            </button>
+    <!-- Kayıt Modalı -->
+    <div id="register-modal" class="modal">
+        <div class="modal-header">
+            <h3>Kayıt Ol 🐾</h3>
+            <span class="modal-close" onclick="toggleModal('register-modal')">&times;</span>
         </div>
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </nav>
+        <form class="auth-form" onsubmit="event.preventDefault(); alert('Kayıt başarılı! Çiçi Kitap ailesine hoş geldin 🐾'); toggleModal('register-modal');">
+            <input type="text" placeholder="Ad Soyad" required>
+            <input type="email" placeholder="E-posta" required>
+            <input type="password" placeholder="Şifre" required>
+            <button type="submit">Kayıt Ol</button>
+        </form>
+    </div>
 
     <!-- Sepet Modalı -->
-    <div id="cart-modal" class="cart-modal">
-        <div class="cart-modal-header">
+    <div id="cart-modal" class="modal">
+        <div class="modal-header">
             <h3>Sepetim 🐾</h3>
-            <span class="close-cart" onclick="toggleCart()">&times;</span>
+            <span class="modal-close" onclick="toggleModal('cart-modal')">&times;</span>
         </div>
         <div id="cart-items-list" class="cart-items-list">
             <p style="text-align:center; color:#aaa;">Sepetiniz henüz boş.</p>

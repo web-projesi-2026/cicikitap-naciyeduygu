@@ -33,7 +33,7 @@ function displayBooks(books) {
                 <h3>${book.title}</h3>
                 <p style="color: #aaa; cursor: pointer; text-decoration: underline;" onclick="window.location.href='project.html?author=${encodeURIComponent(book.author)}'">${book.author}</p>
                 <p>${book.price}</p>
-                <button class="btn btn-primary" onclick="addToCart()">Sepete Ekle</button>
+                <button class="btn btn-primary" onclick="addToCart('${book.title}', '${book.price}', '${book.img}')">Sepete Ekle</button>
             </div>
         `;
     });

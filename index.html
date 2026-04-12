@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- Mama Bağışı Bandı -->
+    <div class="mama-banner">
+        <p>🐾 Her kitap siparişinin %25'i hayvanseverlerden sokak dostlarımıza mama ikramı olarak bağışlanmaktadır! 🐾 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 🐾 Her kitap siparişinin %25'i hayvanseverlerden sokak dostlarımıza mama ikramı olarak bağışlanmaktadır! 🐾</p>
+    </div>
+
     <!-- Kedi Animasyon Arka Planı -->
     <div class="cat-bg" id="cat-bg"></div>
 
@@ -21,12 +26,15 @@
             <li><a href="pages/about.html">Hakkımızda</a></li>
             <li><a href="pages/gallery.html">Kitaplarımız</a></li>
             <li><a href="pages/contact.html">Geri Dönüşleriniz</a></li>
+            <li><a href="pages/compare.html">Fiyat Karşılaştır</a></li>
             <li><a href="#tracking">Kargo Takip</a></li>
         </ul>
         <div class="auth-buttons">
             <a href="#" class="btn btn-secondary">Giriş Yap</a>
             <a href="#" class="btn btn-primary">Kayıt Ol</a>
-            <a href="#" class="btn btn-secondary"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span></a>
+            <button class="btn btn-secondary" onclick="toggleCart()">
+                <i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span>
+            </button>
             <a href="#" class="btn btn-secondary"><i class="fas fa-search"></i> Görsel ile Ara</a>
         </div>
         <div class="hamburger" id="hamburger">
@@ -35,6 +43,32 @@
             <span></span>
         </div>
     </nav>
+
+    <!-- Sepet Modalı -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-modal-header">
+            <h3>Sepetim 🐾</h3>
+            <span class="close-cart" onclick="toggleCart()">&times;</span>
+        </div>
+        <div id="cart-items-list" class="cart-items-list">
+            <p style="text-align:center; color:#aaa;">Sepetiniz henüz boş.</p>
+        </div>
+        <div id="cart-footer" style="display:none;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:15px; font-weight:bold;">
+                <span>Toplam:</span>
+                <span id="cart-total">0.00 TL</span>
+            </div>
+            <button class="btn btn-primary" style="width:100%;" onclick="completeOrder()">Siparişi Tamamla</button>
+        </div>
+    </div>
+
+    <!-- Teşekkür Ekranı -->
+    <div id="thanks-overlay" class="thanks-overlay">
+        <div class="waving-cat">👋🐱</div>
+        <h2 style="font-size: 2.5rem; margin-top: 20px;">Siparişiniz İçin Teşekkür Ederiz!</h2>
+        <p style="font-size: 1.2rem; margin-top: 10px;">Çiçi ve arkadaşları adına teşekkürler 🐾</p>
+        <button class="btn btn-primary" style="margin-top: 30px;" onclick="closeThanks()">Kapat</button>
+    </div>
 
     <header class="hero">
         <h1>Çiçi Kitap Dünyasına Hoş Geldiniz</h1>
@@ -98,3 +132,4 @@
     <script src="assets/js/app.js"></script>
 </body>
 </html>
+

@@ -47,7 +47,6 @@ body {
     100% { transform: translate(-200%, 0); }
 }
 
-
 /* Arka Plandaki Kedi Animasyonları */
 .cat-bg {
     position: fixed;
@@ -204,8 +203,8 @@ nav {
     color: var(--primary-color) !important;
 }
 
-/* Sepet Modalı */
-.cart-modal {
+/* Modallar Genel Stil */
+.modal {
     display: none;
     position: fixed;
     top: 50%;
@@ -217,15 +216,15 @@ nav {
     border-radius: 15px;
     box-shadow: 0 0 30px rgba(0,0,0,0.8);
     z-index: 2000;
-    padding: 20px;
+    padding: 30px;
     border: 2px solid var(--accent-color);
 }
 
-.cart-modal.active {
+.modal.active {
     display: block;
 }
 
-.cart-modal-header {
+.modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -234,12 +233,40 @@ nav {
     margin-bottom: 15px;
 }
 
-.close-cart {
+.modal-close {
     font-size: 1.5rem;
     cursor: pointer;
     color: var(--accent-color);
 }
 
+/* Form Stilleri */
+.auth-form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: none;
+    background: #444;
+    color: white;
+}
+
+.auth-form button {
+    width: 100%;
+    padding: 12px;
+    background: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.auth-form button:hover {
+    background: white;
+}
+
+/* Sepet Stilleri */
 .cart-items-list {
     max-height: 300px;
     overflow-y: auto;

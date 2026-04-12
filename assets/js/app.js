@@ -1,108 +1,88 @@
-/* ═══ NAVİGASYON VE SCROLL ═════════════════════════════════════════════ */
-document.addEventListener('DOMContentLoaded', () => {
-  const nav = document.getElementById('nav');
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const mobileLinks = document.querySelectorAll('.mobile-link');
+// Hamburger Menü Kontrolü
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
 
-  // Sayfa kaydırıldığında nav bar'ı şeffaf yapma
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      nav.style.padding = '1rem 5%';
-      nav.style.background = 'rgba(10, 10, 15, 0.95)';
-    } else {
-      nav.style.padding = '1.5rem 5%';
-      nav.style.background = 'rgba(10, 10, 15, 0.8)';
-    }
-  });
-
-  // Hamburger menü açma/kapama
-  if (hamburger) {
+if (hamburger) {
     hamburger.addEventListener('click', () => {
-      mobileMenu.classList.toggle('active');
-      hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
     });
-  }
-
-  // Mobil linklere tıklandığında menüyü kapatma
-  mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.remove('active');
-      hamburger.classList.remove('active');
-    });
-  });
-
-  // Smooth scroll (Yumuşak kaydırma)
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
-      
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        targetElement.scrollIntoView({
-          behavior: 'smooth'
-        });
-      }
-    });
-  });
-
-  // Canvas Arka Plan Efekti (Opsiyonel)
-  initCanvas();
-});
-
-/* ═══ ARKA PLAN CANVASI ══════════════════════════════════════════════ */
-function initCanvas() {
-  const canvas = document.getElementById('bgCanvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  const particles = [];
-  const particleCount = 100;
-
-  class Particle {
-    constructor() {
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
-      this.size = Math.random() * 2 + 1;
-      this.speedX = Math.random() * 0.5 - 0.25;
-      this.speedY = Math.random() * 0.5 - 0.25;
-    }
-
-    update() {
-      this.x += this.speedX;
-      this.y += this.speedY;
-
-      if (this.x > canvas.width) this.x = 0;
-      if (this.x < 0) this.x = canvas.width;
-      if (this.y > canvas.height) this.y = 0;
-      if (this.y < 0) this.y = canvas.height;
-    }
-
-    draw() {
-      ctx.fillStyle = 'rgba(99, 102, 241, 0.5)';
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fill();
-    }
-  }
-
-  for (let i = 0; i < particleCount; i++) {
-    particles.push(new Particle());
-  }
-
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => {
-      p.update();
-      p.draw();
-    });
-    requestAnimationFrame(animate);
-  }
-
-  animate();
 }
+
+// Kedi Arka Plan Animasyonu Oluşturucu
+function createFloatingCats() {
+    const catBg = document.getElementById('cat-bg');
+    if (!catBg) return;
+    
+    const cats = ['🐾', '🐱', '🐈', '😸', '😻'];
+    for (let i = 0; i < 20; i++) {
+        const cat = document.createElement('i');
+        cat.innerText = cats[Math.floor(Math.random() * cats.length)];
+        cat.style.position = 'fixed';
+        cat.style.left = Math.random() * 100 + 'vw';
+        cat.style.top = Math.random() * 100 + 'vh';
+        cat.style.fontSize = (Math.random() * 20 + 10) + 'px';
+        cat.style.color = 'rgba(255, 255, 255, 0.1)';
+        cat.style.zIndex = '-1';
+        cat.style.pointerEvents = 'none';
+        cat.style.userSelect = 'none';
+        catBg.appendChild(cat);
+    }
+}
+
+// Kargo Takip Sistemi
+function trackOrder() {
+    const input = document.getElementById('tracking-input');
+    const result = document.getElementById('tracking-result');
+    if (!input || !result) return;
+
+    const no = input.value.trim();
+    if (no === "") {
+        result.innerText = "Lütfen bir kargo numarası girin.";
+        result.style.color = "red";
+    } else {
+        result.innerText = `📦 ${no} numaralı kargonuz yolda! Çiçi kuryemiz hızla getiriyor.`;
+        result.style.color = "#aaaaaa";
+    }
+}
+
+// Sepet Sistemi
+let cartCount = 0;
+function addToCart() {
+    cartCount++;
+    const countSpan = document.getElementById('cart-count');
+    if (countSpan) {
+        countSpan.innerText = cartCount;
+    }
+    alert("Kitap sepete eklendi! 🐾");
+}
+
+// Sayfa Yüklendiğinde
+window.addEventListener('DOMContentLoaded', () => {
+    createFloatingCats();
+    
+    // Öne Çıkan Kitaplar (index.html için)
+    const featuredGrid = document.getElementById('featured-books');
+    if (featuredGrid) {
+        const sampleBooks = [
+            { title: "Kuyucaklı Yusuf", author: "Sabahattin Ali", price: "45.00 TL", img: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400" },
+            { title: "Suç ve Ceza", author: "Dostoyevski", price: "65.00 TL", img: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400" },
+            { title: "Çalıkuşu", author: "Reşat Nuri Güntekin", price: "50.00 TL", img: "https://images.unsplash.com/photo-1589998059171-988d887df646?w=400" },
+            { title: "Küçük Prens", author: "Antoine de Saint-Exupéry", price: "35.00 TL", img: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400" }
+        ];
+
+        sampleBooks.forEach(book => {
+            const isPagesDir = window.location.pathname.includes('/pages/');
+            const authorUrl = isPagesDir ? `project.html?author=${encodeURIComponent(book.author)}` : `pages/project.html?author=${encodeURIComponent(book.author)}`;
+            
+            featuredGrid.innerHTML += `
+                <div class="book-card">
+                    <img src="${book.img}" alt="${book.title}">
+                    <h3>${book.title}</h3>
+                    <p style="color: #aaa; cursor: pointer; text-decoration: underline;" onclick="window.location.href='${authorUrl}'">${book.author}</p>
+                    <p>${book.price}</p>
+                    <button class="btn btn-primary" onclick="addToCart()">Sepete Ekle</button>
+                </div>
+            `;
+        });
+    }
+});

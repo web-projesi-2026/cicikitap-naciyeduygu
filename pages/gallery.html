@@ -4,104 +4,131 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kitaplarımız | Çiçi Kitap</title>
-
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-
 <body>
-
-<div class="mama-banner">
-    <p>🐾 Her kitap siparişinin %25'i sokak dostlarına mama olarak bağışlanır 🐾</p>
-</div>
-
-<!-- NAV -->
-<nav>
-    <a href="../index.html" class="logo">
-        <img src="../assets/logo-3d.png" alt="logo">
-        Çiçi Kitap
-    </a>
-
-    <ul class="nav-links" id="nav-links">
-        <li><a href="../index.html">Ana Sayfa</a></li>
-        <li><a href="about.html">Hakkımızda</a></li>
-        <li><a href="gallery.html" class="active">Kitaplarımız</a></li>
-        <li><a href="contact.html">Geri Dönüşleriniz</a></li>
-        <li><a href="compare.html">Fiyat Karşılaştır</a></li>
-    </ul>
-
-    <div class="auth-buttons">
-        <button class="btn btn-secondary" onclick="toggleModal('cart-modal')">
-            🛒 <span id="cart-count">0</span>
-        </button>
-        <button class="btn btn-primary" onclick="toggleModal('login-modal')">Giriş</button>
+    <div class="mama-banner">
+        <p>🐾 Her kitap siparişinin %25'i hayvanseverlerden sokak dostlarımıza mama ikramı olarak bağışlanmaktadır! 🐾 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 🐾 Her kitap siparişinin %25'i hayvanseverlerden sokak dostlarımıza mama ikramı olarak bağışlanmaktadır! 🐾</p>
     </div>
 
-    <div class="hamburger" onclick="toggleMenu()">
-        <span></span><span></span><span></span>
-    </div>
-</nav>
+    <div class="cat-bg" id="cat-bg"></div>
 
-<!-- BAŞLIK -->
-<main class="container">
-    <h1 class="section-title">Kitap Koleksiyonumuz</h1>
+    <nav>
+        <a href="../index.html" class="logo">
+            <img src="../assets/logo-3d.png" alt="Çiçi Kitap 3D Logo">
+            Çiçi Kitap
+        </a>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="../index.html">Ana Sayfa</a></li>
+            <li><a href="about.html">Hakkımızda</a></li>
+            <li><a href="gallery.html">Kitaplarımız</a></li>
+            <li><a href="contact.html">Geri Dönüşleriniz</a></li>
+            <li><a href="compare.html">Fiyat Karşılaştır</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <button class="btn btn-secondary" onclick="toggleModal('tracking-modal')">
+                <i class="fas fa-truck"></i> Kargo Takip
+            </button>
+            <button class="btn btn-secondary" onclick="toggleModal('login-modal')">Giriş Yap</button>
+            <button class="btn btn-primary" onclick="toggleModal('register-modal')">Kayıt Ol</button>
+            <button class="btn btn-secondary" onclick="toggleModal('cart-modal')">
+                <i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span>
+            </button>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
 
-    <!-- 🔍 ARAMA + FİLTRE -->
-    <div class="filter-area">
-
-        <input type="text" id="searchInput" placeholder="Kitap veya yazar ara...">
-
-        <select id="categorySelect">
-            <option>Hepsi</option>
-            <option>Türk Klasikleri</option>
-            <option>Dünya Klasikleri</option>
-            <option>Roman</option>
-            <option>Şiir</option>
-        </select>
-
-    </div>
-
-    <!-- 📚 KİTAPLAR -->
-    <div class="book-grid" id="book-list">
-        <!-- JS dolduracak -->
-    </div>
-</main>
-
-<!-- 🛒 SEPET -->
-<div id="cart-modal" class="modal">
-    <div class="modal-header">
-        <h3>Sepetim 🐾</h3>
-        <span class="modal-close" onclick="toggleModal('cart-modal')">&times;</span>
-    </div>
-
-    <div id="cart-items-list"></div>
-
-    <div style="margin-top:20px; font-weight:bold;">
-        Toplam: <span id="cart-total">0 TL</span>
-    </div>
-</div>
-
-<!-- 🔐 LOGIN -->
-<div id="login-modal" class="modal">
-    <div class="modal-header">
-        <h3>Giriş Yap</h3>
-        <span class="modal-close" onclick="toggleModal('login-modal')">&times;</span>
+    <!-- Kargo Takip Modalı -->
+    <div id="tracking-modal" class="modal">
+        <div class="modal-header">
+            <h3>Kargo Sorgulama 🐾</h3>
+            <span class="modal-close" onclick="toggleModal('tracking-modal')">&times;</span>
+        </div>
+        <div class="auth-form">
+            <p style="margin-bottom: 15px; font-size: 0.9rem; color: #aaa;">Kargo durumunuzu öğrenmek için takip numaranızı girin.</p>
+            <input type="text" id="modal-tracking-input" placeholder="Kargo No: örn. 123456789">
+            <button onclick="trackOrderModal()">Sorgula</button>
+            <div id="modal-tracking-result" style="margin-top: 15px; font-weight: bold; text-align: center;"></div>
+        </div>
     </div>
 
-    <form onsubmit="event.preventDefault(); loginDemo();">
-        <input type="email" id="login-email" placeholder="E-posta" required>
-        <input type="password" placeholder="Şifre" required>
-        <button class="btn btn-primary">Giriş Yap</button>
-    </form>
-</div>
+    <!-- Giriş Modalı -->
+    <div id="login-modal" class="modal">
+        <div class="modal-header">
+            <h3>Giriş Yap 🐾</h3>
+            <span class="modal-close" onclick="toggleModal('login-modal')">&times;</span>
+        </div>
+        <form class="auth-form" onsubmit="event.preventDefault(); alert('Giriş başarılı! Hoş geldin 🐾'); toggleModal('login-modal');">
+            <input type="email" placeholder="E-posta" required>
+            <input type="password" placeholder="Şifre" required>
+            <button type="submit">Giriş Yap</button>
+        </form>
+    </div>
 
-<!-- FOOTER -->
-<footer style="text-align:center; padding:2rem; background:#000; margin-top:50px;">
-    <p>&copy; 2026 Çiçi Kitap 🐾</p>
-</footer>
+    <!-- Kayıt Modalı -->
+    <div id="register-modal" class="modal">
+        <div class="modal-header">
+            <h3>Kayıt Ol 🐾</h3>
+            <span class="modal-close" onclick="toggleModal('register-modal')">&times;</span>
+        </div>
+        <form class="auth-form" onsubmit="event.preventDefault(); alert('Kayıt başarılı! Çiçi Kitap ailesine hoş geldin 🐾'); toggleModal('register-modal');">
+            <input type="text" placeholder="Ad Soyad" required>
+            <input type="email" placeholder="E-posta" required>
+            <input type="password" placeholder="Şifre" required>
+            <button type="submit">Kayıt Ol</button>
+        </form>
+    </div>
 
-<!-- ⚠️ ÖNEMLİ -->
-<script src="../assets/js/app.js"></script>
+    <!-- Sepet Modalı -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-header">
+            <h3>Sepetim 🐾</h3>
+            <span class="modal-close" onclick="toggleModal('cart-modal')">&times;</span>
+        </div>
+        <div id="cart-items-list" class="cart-items-list">
+            <p style="text-align:center; color:#aaa;">Sepetiniz henüz boş.</p>
+        </div>
+        <div id="cart-footer" style="display:none;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:15px; font-weight:bold;">
+                <span>Toplam:</span>
+                <span id="cart-total">0.00 TL</span>
+            </div>
+            <button class="btn btn-primary" style="width:100%;" onclick="completeOrder()">Siparişi Tamamla</button>
+        </div>
+    </div>
 
-</body>
-</html>
+    <!-- Teşekkür Ekranı -->
+    <div id="thanks-overlay" class="thanks-overlay">
+        <div class="waving-cat">👋🐱</div>
+        <h2 style="font-size: 2.5rem; margin-top: 20px;">Siparişiniz İçin Teşekkür Ederiz!</h2>
+        <p style="font-size: 1.2rem; margin-top: 10px;">Çiçi ve arkadaşları adına teşekkürler 🐾</p>
+        <button class="btn btn-primary" style="margin-top: 30px;" onclick="closeThanks()">Kapat</button>
+    </div>
+
+    <main class="container">
+        <h1 class="section-title">Kitap Koleksiyonumuz</h1>
+        
+        <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 30px; flex-wrap: wrap;">
+            <button class="filter-btn" onclick="filterBooks('all')">Hepsi</button>
+            <button class="filter-btn" onclick="filterBooks('dunya')">Dünya Klasikleri</button>
+            <button class="filter-btn" onclick="filterBooks('turk')">Türk Klasikleri</button>
+            <button class="filter-btn" onclick="filterBooks('roman')">Roman</button>
+            <button class="filter-btn" onclick="filterBooks('siir')">Şiir</button>
+        </div>
+
+        <div class="book-grid" id="gallery-grid">
+            <!-- JavaScript ile doldurulacak -->
+        </div>
+    </main>
+
+    <footer style="text-align: center; padding: 2rem; background: #000; margin-top: 50px;">
+        <p>&copy; 2026 Çiçi Kitap - Kitap Dostu Kediler 🐾</p>
+    </footer>
+
+    <script src="../assets/js/gallery.js"></script>
+    <script src="../asse

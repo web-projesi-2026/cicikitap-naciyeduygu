@@ -3,19 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İletişim | Çiçi Kitap</title>
+    <title>İletişim ve Geri Bildirim | Çiçi Kitap</title>
 
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .form-group { margin-bottom: 15px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; color: var(--accent); }
+        .error-message { color: var(--danger); font-size: 0.85rem; display: none; margin-top: 5px; font-weight: bold; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; }
+    </style>
 </head>
 
 <body>
 
     <div class="mama-banner">
         <p>
-            🐾 Her kitap siparişinin %25'i sokak dostlarına mama desteği olur! 🐾
+            🐾 Her geri bildiriminiz sokak dostlarımıza bir kap mama umudu taşıyor! 🐾
             &nbsp;&nbsp;
-            Çiçi Kitap ile oku, paylaş, destek ol. 🐾
+            Çiçi Kitap ile iletişime geçin. 🐾
         </p>
     </div>
 
@@ -39,18 +45,13 @@
                 <i class="fas fa-sun"></i>
             </button>
 
-            <button class="btn btn-secondary" onclick="toggleModal('tracking-modal')">
-                <i class="fas fa-truck"></i>
-            </button>
-
             <button class="btn btn-secondary" onclick="toggleModal('cart-modal')">
                 <i class="fas fa-shopping-cart"></i>
                 <span id="cart-count">0</span>
             </button>
 
-            <button class="btn btn-primary" onclick="toggleModal('login-modal')">
-                Giriş
-            </button>
+            <button class="btn btn-secondary desktop-only" onclick="toggleModal('login-modal')">Giriş Yap</button>
+            <button class="btn btn-primary desktop-only" onclick="toggleModal('register-modal')">Kayıt Ol</button>
         </div>
 
         <div class="hamburger" id="hamburger" onclick="toggleMenu()">
@@ -63,63 +64,100 @@
     <main class="container">
 
         <div class="section-header">
-            <h1 class="section-title">Geri Dönüşleriniz</h1>
-            <p>Öneri, yorum ve kitap taleplerinizi bizimle paylaşabilirsiniz.</p>
+            <h1 class="section-title">Bize Ulaşın</h1>
+            <p>Sorularınız, önerileriniz veya sokak dostlarımız için geri bildirimleriniz bizim için çok değerli.</p>
         </div>
 
         <div class="contact-grid">
+            <!-- İletişim Bilgileri -->
+            <div class="content-card contact-info">
+                <h3>İletişim Bilgilerimiz</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Kitap Sever Sokak, No: 1907, İstanbul</p>
+                <p><i class="fas fa-phone"></i> +90 500 000 00 00</p>
+                <p><i class="fas fa-envelope"></i> merhaba@cicikitap.com</p>
+                
+                <div class="stats" style="margin-top: 30px;">
+                    <div class="stat">
+                        <strong>5000+</strong>
+                        <p>Mutlu Okur</p>
+                    </div>
+                    <div class="stat">
+                        <strong>1 Ton</strong>
+                        <p>Mama Bağışı</p>
+                    </div>
+                </div>
+            </div>
 
-            <section class="content-card contact-info">
-                <h3>İletişim Bilgileri</h3>
+            <!-- ÖDEV FORMU: Geri Bildirim Formu -->
+            <div class="content-card">
+                <h3>Geri Bildirim Formu</h3>
+                <p style="margin-bottom: 20px; font-size: 0.9rem; color: var(--muted);">* Tüm alanların doldurulması zorunludur.</p>
+                
+                <form id="feedbackForm" class="auth-form" novalidate>
+                    <div class="form-group">
+                        <label for="fullName">Adınız Soyadınız</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Örn: Naciye Duygu" required>
+                        <span class="error-message" id="nameError">Lütfen adınızı ve soyadınızı giriniz (en az 3 karakter).</span>
+                    </div>
 
-                <p>
-                    <i class="fas fa-envelope"></i>
-                    naciyeduygu@gmail.com
-                </p>
+                    <div class="form-group">
+                        <label for="email">E-posta Adresiniz</label>
+                        <input type="email" id="email" name="email" placeholder="Örn: ornek@mail.com" required>
+                        <span class="error-message" id="emailError">Geçerli bir e-posta adresi giriniz.</span>
+                    </div>
 
-                <p>
-                    <i class="fab fa-github"></i>
-                    github.com/naciyeduygu
-                </p>
+                    <div class="form-group">
+                        <label for="subject">Konu</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Seçiniz...</option>
+                            <option value="öneri">Öneri</option>
+                            <option value="şikayet">Şikayet</option>
+                            <option value="mama">Mama Bağışı Hakkında</option>
+                            <option value="diğer">Diğer</option>
+                        </select>
+                        <span class="error-message" id="subjectError">Lütfen bir konu seçiniz.</span>
+                    </div>
 
-                <p>
-                    <i class="fas fa-location-dot"></i>
-                    Türkiye
-                </p>
+                    <div class="form-group">
+                        <label for="message">Mesajınız</label>
+                        <textarea id="message" name="message" placeholder="Mesajınızı buraya yazın..." required></textarea>
+                        <span class="error-message" id="messageError">Lütfen mesajınızı yazınız (en az 10 karakter).</span>
+                    </div>
 
-                <p>
-                    <i class="fas fa-paw"></i>
-                    Her mesaj bizim için değerli.
-                </p>
-            </section>
-
-            <section class="content-card">
-                <form class="auth-form" onsubmit="handleContact(event)">
-                    <input type="text" placeholder="Adınız" required>
-                    <input type="email" placeholder="E-posta" required>
-                    <textarea placeholder="Mesajınız" required></textarea>
-
-                    <button type="submit">Mesaj Gönder</button>
-
-                    <div id="contact-message" class="form-message"></div>
+                    <button type="submit" class="btn btn-primary full-btn">Gönder 🐾</button>
                 </form>
-            </section>
 
+                <div id="successMessage" class="form-message" style="display:none; margin-top: 20px; padding: 15px; background: rgba(50, 199, 102, 0.1); border: 1px solid var(--success); border-radius: 12px; text-align: center;">
+                    <i class="fas fa-check-circle" style="color: var(--success); font-size: 1.5rem; margin-bottom: 10px; display: block;"></i>
+                    Mesajınız başarıyla iletildi! En kısa sürede size dönüş yapacağız. 🐾
+                </div>
+            </div>
         </div>
 
     </main>
+
+    <!-- MODALS -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-header">
+            <h3>Sepetim 🐾</h3>
+            <span class="modal-close" onclick="toggleModal('cart-modal')">&times;</span>
+        </div>
+        <div id="cart-items-list" class="cart-items-list"></div>
+        <div class="cart-total-box">
+            <strong>Toplam:</strong>
+            <span id="cart-total">0 TL</span>
+        </div>
+    </div>
 
     <div id="login-modal" class="modal">
         <div class="modal-header">
             <h3>Giriş Yap 🐾</h3>
             <span class="modal-close" onclick="toggleModal('login-modal')">&times;</span>
         </div>
-
-        <form class="auth-form" onsubmit="event.preventDefault(); loginDemo();">
-            <input type="email" id="login-email" placeholder="E-posta adresiniz" required>
-            <input type="password" placeholder="Şifreniz" required>
-
-            <button type="submit">Giriş Yap</button>
+        <form class="auth-form" onsubmit="event.preventDefault(); alert('Giriş başarılı! 🐾'); toggleModal('login-modal');">
+            <input type="email" placeholder="E-posta" required>
+            <input type="password" placeholder="Şifre" required>
+            <button type="submit" class="btn btn-primary full-btn">Giriş Yap</button>
         </form>
     </div>
 
@@ -128,77 +166,82 @@
             <h3>Kayıt Ol 🐾</h3>
             <span class="modal-close" onclick="toggleModal('register-modal')">&times;</span>
         </div>
-
-        <form class="auth-form" onsubmit="event.preventDefault(); registerDemo();">
+        <form class="auth-form" onsubmit="event.preventDefault(); alert('Kayıt başarılı! 🐾'); toggleModal('register-modal');">
             <input type="text" placeholder="Ad Soyad" required>
             <input type="email" placeholder="E-posta" required>
             <input type="password" placeholder="Şifre" required>
-
-            <button type="submit">Kayıt Ol</button>
+            <button type="submit" class="btn btn-primary full-btn">Kayıt Ol</button>
         </form>
-    </div>
-
-    <div id="tracking-modal" class="modal">
-        <div class="modal-header">
-            <h3>Kargo Takip 🐾</h3>
-            <span class="modal-close" onclick="toggleModal('tracking-modal')">&times;</span>
-        </div>
-
-        <div class="auth-form">
-            <p>Deneme kodu: <strong>CICI2026</strong></p>
-
-            <input type="text" id="modal-tracking-input" placeholder="Kargo takip numarası">
-
-            <button onclick="trackOrderModal()">Sorgula</button>
-
-            <div id="modal-tracking-result" class="form-message"></div>
-        </div>
-    </div>
-
-    <div id="cart-modal" class="modal">
-        <div class="modal-header">
-            <h3>Sepetim 🐾</h3>
-            <span class="modal-close" onclick="toggleModal('cart-modal')">&times;</span>
-        </div>
-
-        <div id="cart-items-list" class="cart-items-list"></div>
-
-        <div id="cart-footer">
-            <strong>Toplam:</strong>
-            <span id="cart-total">0 TL</span>
-        </div>
-
-        <button class="btn btn-primary full-btn" style="margin-top:14px" onclick="completeOrder()">
-            Siparişi Tamamla
-        </button>
-    </div>
-
-    <div id="thanks-overlay" class="thanks-overlay">
-        <div>
-            <div class="waving-cat">👋🐱</div>
-
-            <h2>Siparişiniz İçin Teşekkür Ederiz!</h2>
-
-            <p>Çiçi ve sokak dostları adına teşekkürler.</p>
-
-            <button class="btn btn-primary" style="margin-top:24px" onclick="closeThanks()">
-                Kapat
-            </button>
-        </div>
     </div>
 
     <button id="back-to-top" onclick="scrollToTop()">
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <a href="https://wa.me/905000000000" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
     <footer>
-        <p>&copy; 2026 Çiçi Kitap 🐾</p>
+        <p>&copy; 2026 Çiçi Kitap - Kitap Dostu Kediler 🐾</p>
     </footer>
 
     <script src="../assets/js/app.js"></script>
+    <script>
+        // FORM DOĞRULAMA MANTIĞI (27 Nisan Ödevi)
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            const name = document.getElementById('fullName');
+            const email = document.getElementById('email');
+            const subject = document.getElementById('subject');
+            const message = document.getElementById('message');
+            
+            // Hata mesajlarını temizle
+            document.querySelectorAll('.error-message').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('input, select, textarea').forEach(el => el.style.borderColor = 'var(--border)');
+
+            // Ad Soyad Kontrolü
+            if (name.value.trim().length < 3) {
+                document.getElementById('nameError').style.display = 'block';
+                name.style.borderColor = 'var(--danger)';
+                isValid = false;
+            }
+
+            // E-posta Kontrolü (Regex ile format kontrolü)
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email.value)) {
+                document.getElementById('emailError').style.display = 'block';
+                email.style.borderColor = 'var(--danger)';
+                isValid = false;
+            }
+
+            // Konu Seçimi Kontrolü
+            if (subject.value === "") {
+                document.getElementById('subjectError').style.display = 'block';
+                subject.style.borderColor = 'var(--danger)';
+                isValid = false;
+            }
+
+            // Mesaj Kontrolü
+            if (message.value.trim().length < 10) {
+                document.getElementById('messageError').style.display = 'block';
+                message.style.borderColor = 'var(--danger)';
+                isValid = false;
+            }
+
+            // Form geçerliyse
+            if (isValid) {
+                // Formu gizle, başarı mesajını göster
+                this.style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // Konsola veriyi yazdır (Veri işleme mantığı)
+                console.log("Form Verileri:", {
+                    ad: name.value,
+                    eposta: email.value,
+                    konu: subject.value,
+                    mesaj: message.value
+                });
+            }
+        });
+    </script>
 </body>
 </html>

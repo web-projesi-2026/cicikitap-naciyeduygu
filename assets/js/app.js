@@ -210,6 +210,145 @@ function filterCompare() {
     renderCompareTable(filtered);
 }
 
+const compareData = [
+    { book: "Suç ve Ceza", platform: "Çiçi Kitap", price: 65, status: "En Uygun" },
+    { book: "Suç ve Ceza", platform: "KitapYurdu", price: 72, status: "-" },
+    { book: "Suç ve Ceza", platform: "D&R", price: 80, status: "-" },
+
+    { book: "Kuyucaklı Yusuf", platform: "Çiçi Kitap", price: 45, status: "En Uygun" },
+    { book: "Kuyucaklı Yusuf", platform: "Trendyol", price: 52, status: "-" },
+    { book: "Kuyucaklı Yusuf", platform: "Amazon", price: 55, status: "-" },
+
+    { book: "Küçük Prens", platform: "Çiçi Kitap", price: 35, status: "En Uygun" },
+    { book: "Küçük Prens", platform: "KitapYurdu", price: 42, status: "-" },
+    { book: "Küçük Prens", platform: "D&R", price: 48, status: "-" }
+];
+
+function renderCompareTable(data) {
+    const tbody = document.getElementById("compare-body");
+    if (!tbody) return;
+
+    tbody.innerHTML = "";
+
+    data.forEach(item => {
+        tbody.innerHTML += `
+            <tr>
+                <td>${item.book}</td>
+                <td>${item.platform}</td>
+                <td>${item.price} TL</td>
+                <td class="${item.status === "En Uygun" ? "best-price" : ""}">
+                    ${item.status}
+                </td>
+            </tr>
+        `;
+    });
+}
+
+function filterCompare() {
+    const input = document.getElementById("compare-search");
+    if (!input) return;
+
+    const searchText = input.value.toLowerCase();
+
+    const filtered = compareData.filter(item =>
+        item.book.toLowerCase().includes(searchText)
+    );
+
+    renderCompareTable(filtered);
+}
+const compareData = [
+    { book: "Suç ve Ceza", platform: "Çiçi Kitap", price: 65, status: "En Uygun" },
+    { book: "Suç ve Ceza", platform: "KitapYurdu", price: 72, status: "-" },
+    { book: "Suç ve Ceza", platform: "D&R", price: 80, status: "-" },
+
+    { book: "Kuyucaklı Yusuf", platform: "Çiçi Kitap", price: 45, status: "En Uygun" },
+    { book: "Kuyucaklı Yusuf", platform: "Trendyol", price: 52, status: "-" },
+    { book: "Kuyucaklı Yusuf", platform: "Amazon", price: 55, status: "-" },
+
+    { book: "Küçük Prens", platform: "Çiçi Kitap", price: 35, status: "En Uygun" },
+    { book: "Küçük Prens", platform: "KitapYurdu", price: 42, status: "-" },
+    { book: "Küçük Prens", platform: "D&R", price: 48, status: "-" }
+];
+
+function renderCompareTable(data) {
+    const tbody = document.getElementById("compare-body");
+    if (!tbody) return;
+
+    tbody.innerHTML = "";
+
+    data.forEach(item => {
+        tbody.innerHTML += `
+            <tr>
+                <td>${item.book}</td>
+                <td>${item.platform}</td>
+                <td>${item.price} TL</td>
+                <td class="${item.status === "En Uygun" ? "best-price" : ""}">
+                    ${item.status}
+                </td>
+            </tr>
+        `;
+    });
+}
+
+function filterCompare() {
+    const input = document.getElementById("compare-search");
+    if (!input) return;
+
+    const searchText = input.value.toLowerCase();
+
+    const filtered = compareData.filter(item =>
+        item.book.toLowerCase().includes(searchText)
+    );
+
+    renderCompareTable(filtered);
+}
+const compareData = [
+    { book: "Suç ve Ceza", platform: "Çiçi Kitap", price: 65, status: "En Uygun" },
+    { book: "Suç ve Ceza", platform: "KitapYurdu", price: 72, status: "-" },
+    { book: "Suç ve Ceza", platform: "D&R", price: 80, status: "-" },
+
+    { book: "Kuyucaklı Yusuf", platform: "Çiçi Kitap", price: 45, status: "En Uygun" },
+    { book: "Kuyucaklı Yusuf", platform: "Trendyol", price: 52, status: "-" },
+    { book: "Kuyucaklı Yusuf", platform: "Amazon", price: 55, status: "-" },
+
+    { book: "Küçük Prens", platform: "Çiçi Kitap", price: 35, status: "En Uygun" },
+    { book: "Küçük Prens", platform: "KitapYurdu", price: 42, status: "-" },
+    { book: "Küçük Prens", platform: "D&R", price: 48, status: "-" }
+];
+
+function renderCompareTable(data) {
+    const tbody = document.getElementById("compare-body");
+    if (!tbody) return;
+
+    tbody.innerHTML = "";
+
+    data.forEach(item => {
+        tbody.innerHTML += `
+            <tr>
+                <td>${item.book}</td>
+                <td>${item.platform}</td>
+                <td>${item.price} TL</td>
+                <td class="${item.status === "En Uygun" ? "best-price" : ""}">
+                    ${item.status}
+                </td>
+            </tr>
+        `;
+    });
+}
+
+function filterCompare() {
+    const input = document.getElementById("compare-search");
+    if (!input) return;
+
+    const searchText = input.value.toLowerCase();
+
+    const filtered = compareData.filter(item =>
+        item.book.toLowerCase().includes(searchText)
+    );
+
+    renderCompareTable(filtered);
+}
+
 window.addEventListener("DOMContentLoaded", function () {
     renderCompareTable(compareData);
 
@@ -219,3 +358,4 @@ window.addEventListener("DOMContentLoaded", function () {
         compareInput.addEventListener("input", filterCompare);
     }
 });
+

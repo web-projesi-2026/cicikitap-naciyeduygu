@@ -35,6 +35,9 @@
             <li><a href="pages/contact.html">Geri Dönüşleriniz</a></li>
             <li><a href="pages/compare.html">Fiyat Karşılaştır</a></li>
             <li><a href="pages/cargo.html">Kargo Takip</a></li>
+            <!-- Mobilde görünecek ek butonlar -->
+            <li class="mobile-only"><a href="#" onclick="toggleModal('login-modal'); toggleMenu();">Giriş Yap</a></li>
+            <li class="mobile-only"><a href="#" onclick="toggleModal('register-modal'); toggleMenu();">Kayıt Ol</a></li>
         </ul>
 
         <div class="auth-buttons">
@@ -47,7 +50,8 @@
                 <span id="cart-count">0</span>
             </button>
 
-            <button class="btn btn-primary" onclick="toggleModal('login-modal')">Giriş Yap</button>
+            <button class="btn btn-secondary desktop-only" onclick="toggleModal('login-modal')">Giriş Yap</button>
+            <button class="btn btn-primary desktop-only" onclick="toggleModal('register-modal')">Kayıt Ol</button>
         </div>
 
         <div class="hamburger" id="hamburger" onclick="toggleMenu()">
@@ -127,12 +131,31 @@
             <span class="modal-close" onclick="toggleModal('login-modal')">&times;</span>
         </div>
 
-        <form class="auth-form" onsubmit="event.preventDefault(); loginDemo();">
+        <form class="auth-form" onsubmit="event.preventDefault(); alert('Giriş başarılı! 🐾'); toggleModal('login-modal');">
             <input type="email" id="login-email" placeholder="E-posta adresiniz" required>
             <input type="password" id="login-password" placeholder="Şifreniz" required>
 
             <button type="submit" class="btn btn-primary full-btn">
                 Giriş Yap
+            </button>
+        </form>
+    </div>
+
+    <!-- REGISTER MODAL -->
+    <div id="register-modal" class="modal">
+        <div class="modal-header">
+            <h3>Kayıt Ol 🐾</h3>
+            <span class="modal-close" onclick="toggleModal('register-modal')">&times;</span>
+        </div>
+
+        <form class="auth-form" onsubmit="event.preventDefault(); alert('Kayıt başarılı! 🐾'); toggleModal('register-modal');">
+            <input type="text" placeholder="Adınız Soyadınız" required>
+            <input type="email" placeholder="E-posta adresiniz" required>
+            <input type="password" placeholder="Şifreniz" required>
+            <input type="password" placeholder="Şifre Tekrar" required>
+
+            <button type="submit" class="btn btn-primary full-btn">
+                Kayıt Ol
             </button>
         </form>
     </div>

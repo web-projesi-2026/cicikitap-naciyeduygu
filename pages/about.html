@@ -1,60 +1,110 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hakkımızda | Çiçi Kitap</title>
+
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
+
     <div class="mama-banner">
-        <p>🐾 Her kitap siparişinin %25'i hayvanseverlerden sokak dostlarımıza mama ikramı olarak bağışlanmaktadır! 🐾 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 🐾 Her kitap siparişinin %25'i hayvanseverlerden sokak dostlarımıza mama ikramı olarak bağışlanmaktadır! 🐾</p>
+        <p>
+            🐾 Her kitap siparişinin %25'i sokak dostlarına mama desteği olur! 🐾
+            &nbsp;&nbsp;
+            Çiçi Kitap ile oku, paylaş, destek ol. 🐾
+        </p>
     </div>
-    <div class="cat-bg" id="cat-bg"></div>
 
     <nav>
         <a href="../index.html" class="logo">
-            <img src="../assets/logo-3d.png" alt="Çiçi Kitap 3D Logo">
+            <img src="../assets/logo-3d.png" alt="Çiçi Kitap"
+                 onerror="this.src='https://img.icons8.com/ios-filled/50/d6a84f/cat.png'">
             Çiçi Kitap
         </a>
+
         <ul class="nav-links" id="nav-links">
             <li><a href="../index.html">Ana Sayfa</a></li>
-            <li><a href="about.html">Hakkımızda</a></li>
+            <li><a href="about.html" class="active">Hakkımızda</a></li>
             <li><a href="gallery.html">Kitaplarımız</a></li>
-            <li><a href="contact.html">Geri Dönüşleriniz</a></li>
             <li><a href="compare.html">Fiyat Karşılaştır</a></li>
+            <li><a href="contact.html">İletişim</a></li>
         </ul>
+
         <div class="auth-buttons">
-            <button class="btn btn-secondary" onclick="toggleModal('tracking-modal')">
-                <i class="fas fa-truck"></i> Kargo Takip
+            <button id="theme-toggle-btn" class="theme-toggle" onclick="toggleTheme()">
+                <i class="fas fa-sun"></i>
             </button>
-            <button class="btn btn-secondary" onclick="toggleModal('login-modal')">Giriş Yap</button>
-            <button class="btn btn-primary" onclick="toggleModal('register-modal')">Kayıt Ol</button>
+
+            <button class="btn btn-secondary" onclick="toggleModal('tracking-modal')">
+                <i class="fas fa-truck"></i>
+            </button>
+
             <button class="btn btn-secondary" onclick="toggleModal('cart-modal')">
-                <i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span>
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </button>
+
+            <button class="btn btn-primary" onclick="toggleModal('login-modal')">
+                Giriş
             </button>
         </div>
-        <div class="hamburger" id="hamburger">
+
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
             <span></span>
             <span></span>
             <span></span>
         </div>
     </nav>
 
-    <!-- Kargo Takip Modalı -->
-    <div id="tracking-modal" class="modal">
-        <div class="modal-header">
-            <h3>Kargo Sorgulama 🐾</h3>
-            <span class="modal-close" onclick="toggleModal('tracking-modal')">&times;</span>
+    <main class="container">
+
+        <div class="section-header">
+            <h1 class="section-title">Hakkımızda</h1>
+            <p>
+                Kitap sevgisini sokak dostlarına destekle birleştiren butik sahaf projesi.
+            </p>
         </div>
-        <div class="auth-form">
-            <p style="margin-bottom: 15px; font-size: 0.9rem; color: #aaa;">Kargo durumunuzu öğrenmek için takip numaranızı girin.</p>
-            <input type="text" id="modal-tracking-input" placeholder="Kargo No: örn. 123456789">
-            <button onclick="trackOrderModal()">Sorgula</button>
-            <div id="modal-tracking-result" style="margin-top: 15px; font-weight: bold; text-align: center;"></div>
-        </div>
-    </div>
+
+        <section class="content-card">
+            <p>
+                Çiçi Kitap, eski ve yeni kitapları sıcak bir sahaf atmosferinde
+                okurlarla buluşturan kedi temalı bir web projesidir.
+                Projenin amacı yalnızca kitap listelemek değil; kullanıcıya arama,
+                filtreleme, sepet, fiyat karşılaştırma ve kargo takip gibi
+                işlevsel deneyimler sunmaktır.
+            </p>
+
+            <br>
+
+            <p>
+                Her siparişin %25'i sokak dostlarına mama desteği fikriyle
+                kurgulanmıştır. Böylece proje hem e-ticaret mantığını hem de
+                sosyal sorumluluk temasını bir araya getirir.
+            </p>
+
+            <div class="stats">
+                <div class="stat">
+                    <strong>8+</strong>
+                    <span>Kitap</span>
+                </div>
+
+                <div class="stat">
+                    <strong>4</strong>
+                    <span>Kategori</span>
+                </div>
+
+                <div class="stat">
+                    <strong>%25</strong>
+                    <span>Mama Desteği</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
 
     <!-- Giriş Modalı -->
     <div id="login-modal" class="modal">
@@ -62,9 +112,11 @@
             <h3>Giriş Yap 🐾</h3>
             <span class="modal-close" onclick="toggleModal('login-modal')">&times;</span>
         </div>
-        <form class="auth-form" onsubmit="event.preventDefault(); alert('Giriş başarılı! Hoş geldin 🐾'); toggleModal('login-modal');">
-            <input type="email" placeholder="E-posta" required>
-            <input type="password" placeholder="Şifre" required>
+
+        <form class="auth-form" onsubmit="event.preventDefault(); loginDemo();">
+            <input type="email" id="login-email" placeholder="E-posta adresiniz" required>
+            <input type="password" placeholder="Şifreniz" required>
+
             <button type="submit">Giriş Yap</button>
         </form>
     </div>
@@ -75,12 +127,32 @@
             <h3>Kayıt Ol 🐾</h3>
             <span class="modal-close" onclick="toggleModal('register-modal')">&times;</span>
         </div>
-        <form class="auth-form" onsubmit="event.preventDefault(); alert('Kayıt başarılı! Çiçi Kitap ailesine hoş geldin 🐾'); toggleModal('register-modal');">
+
+        <form class="auth-form" onsubmit="event.preventDefault(); registerDemo();">
             <input type="text" placeholder="Ad Soyad" required>
             <input type="email" placeholder="E-posta" required>
             <input type="password" placeholder="Şifre" required>
+
             <button type="submit">Kayıt Ol</button>
         </form>
+    </div>
+
+    <!-- Kargo Takip Modalı -->
+    <div id="tracking-modal" class="modal">
+        <div class="modal-header">
+            <h3>Kargo Takip 🐾</h3>
+            <span class="modal-close" onclick="toggleModal('tracking-modal')">&times;</span>
+        </div>
+
+        <div class="auth-form">
+            <p>Deneme kodu: <strong>CICI2026</strong></p>
+
+            <input type="text" id="modal-tracking-input" placeholder="Kargo takip numarası">
+
+            <button onclick="trackOrderModal()">Sorgula</button>
+
+            <div id="modal-tracking-result" class="form-message"></div>
+        </div>
     </div>
 
     <!-- Sepet Modalı -->
@@ -89,30 +161,45 @@
             <h3>Sepetim 🐾</h3>
             <span class="modal-close" onclick="toggleModal('cart-modal')">&times;</span>
         </div>
-        <div id="cart-items-list" class="cart-items-list">
-            <p style="text-align:center; color:#aaa;">Sepetiniz henüz boş.</p>
+
+        <div id="cart-items-list" class="cart-items-list"></div>
+
+        <div id="cart-footer">
+            <strong>Toplam:</strong>
+            <span id="cart-total">0 TL</span>
         </div>
-        <div id="cart-footer" style="display:none;">
-            <div style="display:flex; justify-content:space-between; margin-bottom:15px; font-weight:bold;">
-                <span>Toplam:</span>
-                <span id="cart-total">0.00 TL</span>
-            </div>
-            <button class="btn btn-primary" style="width:100%;" onclick="completeOrder()">Siparişi Tamamla</button>
+
+        <button class="btn btn-primary full-btn" style="margin-top:14px" onclick="completeOrder()">
+            Siparişi Tamamla
+        </button>
+    </div>
+
+    <!-- Teşekkür Ekranı -->
+    <div id="thanks-overlay" class="thanks-overlay">
+        <div>
+            <div class="waving-cat">👋🐱</div>
+
+            <h2>Siparişiniz İçin Teşekkür Ederiz!</h2>
+
+            <p>Çiçi ve sokak dostları adına teşekkürler.</p>
+
+            <button class="btn btn-primary" style="margin-top:24px" onclick="closeThanks()">
+                Kapat
+            </button>
         </div>
     </div>
 
-    <main class="container">
-        <h1 class="section-title">Hakkımızda</h1>
-        <div style="max-width: 800px; margin: 0 auto; background: var(--secondary-color); padding: 30px; border-radius: 10px; border: 1px solid var(--accent-color);">
-            <p style="margin-bottom: 20px;">Çiçi Kitap, kitapların büyülü dünyasını kedi sevgisiyle harmanlayan butik bir sahaf dükkanıdır. İsmimiz, dükkanımızın asıl sahibi olan kedimiz Çiçi'den gelmektedir.</p>
-            <p style="margin-bottom: 20px;">Sadece kitap satmıyoruz, aynı zamanda her siparişinizle sokak hayvanlarına destek oluyoruz. Siparişlerinizin %25'i mama olarak dostlarımıza gidiyor.</p>
-            <div style="text-align: center; margin-top: 30px;">
-                <i class="fas fa-cat fa-4x" style="color: var(--accent-color);"></i>
-            </div>
-        </div>
-    </main>
+    <!-- Yukarı Çık -->
+    <button id="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
-    <footer style="text-align: center; padding: 2rem; background: #000; margin-top: 50px;">
+    <!-- WhatsApp -->
+    <a href="https://wa.me/905000000000" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer>
         <p>&copy; 2026 Çiçi Kitap 🐾</p>
     </footer>
 

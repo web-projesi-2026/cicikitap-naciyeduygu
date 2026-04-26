@@ -31,7 +31,7 @@ function displayBooks(books) {
             <div class="book-card">
                 <img src="${book.img}" alt="${book.title}">
                 <h3>${book.title}</h3>
-                <p style="color: #aaa; cursor: pointer; text-decoration: underline;" onclick="window.location.href='project.html?author=${encodeURIComponent(book.author)}'">${book.author}</p>
+                <p style="color: var(--accent);">${book.author}</p>
                 <p>${book.price}</p>
                 <button class="btn btn-primary" onclick="addToCart('${book.title}', '${book.price}', '${book.img}')">Sepete Ekle</button>
             </div>
@@ -49,12 +49,5 @@ function filterBooks(category) {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const catParam = urlParams.get("cat");
-    
-    if (catParam) {
-        filterBooks(catParam);
-    } else {
-        displayBooks(allBooks);
-    }
+    displayBooks(allBooks);
 });

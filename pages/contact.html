@@ -12,7 +12,111 @@
         .form-group label { display: block; margin-bottom: 5px; font-weight: bold; color: var(--accent); }
         .error-message { color: var(--danger); font-size: 0.85rem; display: none; margin-top: 5px; font-weight: bold; }
         .form-group input, .form-group select, .form-group textarea { width: 100%; }
+        /* PREMIUM FORM TASARIMI */
+.content-card {
+    background: rgba(20, 20, 20, 0.72);
+    border: 1px solid rgba(214, 168, 79, 0.35);
+    border-radius: 22px;
+    padding: 32px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 30px rgba(214, 168, 79, 0.12);
+}
+
+.content-card h3 {
+    color: #d6a84f;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-group label {
+    color: #d6a84f;
+    margin-bottom: 8px;
+}
+
+.auth-form input,
+.auth-form textarea,
+.auth-form select {
+    width: 100%;
+    padding: 15px 17px;
+    border-radius: 14px;
+    border: 1px solid rgba(214, 168, 79, 0.35);
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.auth-form input::placeholder,
+.auth-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.auth-form input:focus,
+.auth-form textarea:focus,
+.auth-form select:focus {
+    border-color: #d6a84f;
+    box-shadow: 0 0 0 3px rgba(214, 168, 79, 0.22);
+    transform: scale(1.01);
+}
+
+.auth-form textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+.auth-form button {
+    margin-top: 8px;
+    padding: 16px;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    box-shadow: 0 10px 25px rgba(214, 168, 79, 0.25);
+    transition: 0.3s;
+}
+
+.auth-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 35px rgba(214, 168, 79, 0.35);
+}
+
+.error-message {
+    background: rgba(255, 77, 77, 0.12);
+    border-left: 3px solid #ff4d4d;
+    padding: 8px 10px;
+    border-radius: 8px;
+}
+
+#successMessage {
+    animation: successPop 0.45s ease;
+}
+
+@keyframes successPop {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (max-width: 768px) {
+    .content-card {
+        padding: 22px;
+    }
+}
+        
     </style>
+    
 </head>
 
 <body>

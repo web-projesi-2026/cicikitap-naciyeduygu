@@ -204,3 +204,50 @@ function filterCompare() {
     );
     renderCompareTable(filtered);
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const form = document.getElementById("contact-form");
+    if (!form) return;
+
+    form.addEventListener("submit", async function(e) {
+        e.preventDefault();
+
+        const message = document.getElementById("form-message");
+        const button = form.querySelector("button");
+
+        button.innerText = "Gönderiliyor...";
+        button.disabled = true;
+
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch("https://formspree.io/f/xgorqqoo", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "Accept": "application/json"
+                }
+            });
+
+            if (response.ok) {
+                message.style.display = "block";
+                message.style.color = "#2ecc71";
+                message.innerText = "Mesajınız başarıyla gönderildi! 🐾";
+                form.reset();
+            } else {
+                message.style.display = "block";
+                message.style.color = "#ff4d4d";
+                message.innerText = "Gönderim sırasında hata oluştu.";
+            }
+        } catch (error) {
+            message.style.display = "block";
+            message.style.color = "#ff4d4d";
+            message.innerText = "Bağlantı hatası oluştu.";
+        }
+
+        button.innerText = "Gönder";
+        button.disabled = false;
+    });
+
+});

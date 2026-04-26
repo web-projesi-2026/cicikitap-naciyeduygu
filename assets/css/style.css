@@ -84,3 +84,53 @@ nav{position:sticky;top:0;z-index:1000;display:flex;align-items:center;justify-c
   .hero-buttons .btn{width:100%}
   .modal{width:95vw;padding:18px}
 }
+.contact-section {
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 35px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(214, 168, 79, 0.35);
+    border-radius: 22px;
+    backdrop-filter: blur(10px);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px 18px;
+    border-radius: 14px;
+    border: 1px solid rgba(214, 168, 79, 0.4);
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.contact-form textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #d6a84f;
+    box-shadow: 0 0 0 3px rgba(214, 168, 79, 0.2);
+}
+
+.contact-form button {
+    margin-top: 10px;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: 700;
+}

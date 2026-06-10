@@ -10,12 +10,15 @@ function toggleMenu() {
 function toggleTheme() {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const targetTheme = currentTheme === 'light' ? 'dark' : 'light';
+
     document.documentElement.setAttribute('data-theme', targetTheme);
     localStorage.setItem('theme', targetTheme);
-    
+
     const themeBtn = document.getElementById('theme-toggle-btn');
     if (themeBtn) {
-        themeBtn.innerHTML = targetTheme === 'light' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+        themeBtn.innerHTML = targetTheme === 'light'
+            ? '<i class="fas fa-moon"></i>'
+            : '<i class="fas fa-sun"></i>';
     }
 }
 
@@ -24,10 +27,9 @@ const savedTheme = localStorage.getItem('theme') || 'dark';
 document.documentElement.setAttribute('data-theme', savedTheme);
 
 // Yukarı Çık Butonu Kontrolü
-const backToTopBtn = document.getElementById('back-to-top');
-
-window.onscroll = function() {
+window.onscroll = function () {
     const btn = document.getElementById('back-to-top');
+
     if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
         if (btn) btn.style.display = "flex";
     } else {
@@ -45,8 +47,10 @@ function scrollToTop() {
 // Modal Yönetimi
 function toggleModal(modalId) {
     const modal = document.getElementById(modalId);
+
     if (modal) {
         modal.classList.toggle('active');
+
         if (modalId === 'cart-modal' && modal.classList.contains('active')) {
             renderCart();
         }
@@ -56,11 +60,10 @@ function toggleModal(modalId) {
 // Boş yere tıklandığında modalları kapat
 window.addEventListener('click', (e) => {
     const modals = document.querySelectorAll('.modal');
+
     modals.forEach(modal => {
-        if (modal.classList.contains('active')) {
-            if (e.target === modal) {
-                modal.classList.remove('active');
-            }
+        if (modal.classList.contains('active') && e.target === modal) {
+            modal.classList.remove('active');
         }
     });
 });
@@ -70,7 +73,11 @@ let cart = JSON.parse(localStorage.getItem('cici-cart')) || [];
 
 function updateCartUI() {
     const cartCount = document.getElementById('cart-count');
-    if (cartCount) cartCount.innerText = cart.length;
+
+    if (cartCount) {
+        cartCount.innerText = cart.length;
+    }
+
     localStorage.setItem('cici-cart', JSON.stringify(cart));
 }
 
@@ -89,11 +96,16 @@ function removeFromCart(index) {
 function renderCart() {
     const cartList = document.getElementById('cart-items-list');
     const cartTotal = document.getElementById('cart-total');
+
     if (!cartList) return;
 
     if (cart.length === 0) {
         cartList.innerHTML = '<p>Sepetiniz henüz boş. 🐾</p>';
-        if (cartTotal) cartTotal.innerText = '0 TL';
+
+        if (cartTotal) {
+            cartTotal.innerText = '0 TL';
+        }
+
         return;
     }
 
@@ -101,7 +113,14 @@ function renderCart() {
     let total = 0;
 
     cart.forEach((item, index) => {
-        const priceValue = parseFloat(item.price.replace(' TL', ''));
+        let priceValue = 0;
+
+        if (typeof item.price === "string") {
+            priceValue = parseFloat(item.price.replace(' TL', ''));
+        } else {
+            priceValue = parseFloat(item.price);
+        }
+
         total += priceValue;
 
         cartList.innerHTML += `
@@ -109,61 +128,145 @@ function renderCart() {
                 <img src="${item.img}" alt="${item.title}">
                 <div>
                     <h4>${item.title}</h4>
-                    <p>${item.price}</p>
+                    <p>${priceValue.toFixed(2)} TL</p>
                 </div>
-                <button onclick="removeFromCart(${index})"><i class="fas fa-trash"></i></button>
+                <button onclick="removeFromCart(${index})">
+                    <i class="fas fa-trash"></i>
+                </button>
             </div>
         `;
     });
 
-    if (cartTotal) cartTotal.innerText = total.toFixed(2) + ' TL';
+    if (cartTotal) {
+        cartTotal.innerText = total.toFixed(2) + ' TL';
+    }
 }
 
-// Sayfa Yüklendiğinde
-window.addEventListener('DOMContentLoaded', () => {
-    updateCartUI();
+// Kitap Verileri
+const bookList = document.getElementById("book-list");
 
-    // Tema butonu ikonunu ayarla
-    const themeBtn = document.getElementById('theme-toggle-btn');
-    if (themeBtn) {
-        themeBtn.innerHTML = document.documentElement.getAttribute('data-theme') === 'light' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
-    }
+let allBooks = [];
+let sepet = JSON.parse(localStorage.getItem("sepet")) || [];
+let favoriler = JSON.parse(localStorage.getItem("favoriler")) || [];
 
-    // Öne çıkan kitapları yükle
-    const featuredGrid = document.getElementById('featured-books');
-    if (featuredGrid) {
-        const sampleBooks = [
-            { title: "Kuyucaklı Yusuf", author: "Sabahattin Ali", price: "45.00 TL", img: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400" },
-            { title: "Suç ve Ceza", author: "Dostoyevski", price: "65.00 TL", img: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400" },
-            { title: "Çalıkuşu", author: "Reşat Nuri Güntekin", price: "50.00 TL", img: "https://images.unsplash.com/photo-1589998059171-988d887df646?w=400" },
-            { title: "Küçük Prens", author: "Antoine de Saint-Exupéry", price: "35.00 TL", img: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400" }
-        ];
-
-        featuredGrid.innerHTML = '';
-        sampleBooks.forEach(book => {
-            featuredGrid.innerHTML += `
-                <div class="book-card">
-                    <img src="${book.img}" alt="${book.title}">
-                    <h3>${book.title}</h3>
-                    <p style="color: var(--accent-color);">${book.author}</p>
-                    <p>${book.price}</p>
-                    <button class="btn btn-primary" onclick="addToCart('${book.title}', '${book.price}', '${book.img}')">Sepete Ekle</button>
-                </div>
-            `;
+// JSON Kitapları Yükleme
+if (bookList) {
+    fetch("assets/data/books.json")
+        .then(response => response.json())
+        .then(books => {
+            allBooks = books;
+            kitaplariGoster(allBooks);
+        })
+        .catch(error => {
+            bookList.innerHTML = "<p>Kitaplar yüklenirken hata oluştu.</p>";
+            console.log("JSON yükleme hatası:", error);
         });
+}
+
+// Kitapları Ekranda Gösterme
+function kitaplariGoster(books) {
+    if (!bookList) return;
+
+    bookList.innerHTML = "";
+
+    if (books.length === 0) {
+        bookList.innerHTML = "<p>Aradığınız kritere uygun kitap bulunamadı.</p>";
+        return;
     }
 
-    // Fiyat karşılaştırma sayfasındaysak
-    if (document.getElementById("compare-body")) {
-        renderCompareTable(compareData);
-        const compareInput = document.getElementById("compare-search");
-        if (compareInput) {
-            compareInput.addEventListener("input", filterCompare);
-        }
-    }
-});
+    books.forEach(book => {
+        const card = document.createElement("div");
+        card.className = "book-card";
 
-// Fiyat karşılaştırma verisi
+        card.innerHTML = `
+            <img src="${book.resim}" alt="${book.ad}">
+            <h3>${book.ad}</h3>
+            <p><strong>Yazar:</strong> ${book.yazar}</p>
+            <p><strong>Kategori:</strong> ${book.kategori}</p>
+            <p class="price">${book.fiyat} TL</p>
+
+            <button onclick="sepeteEkle(${book.id}, '${book.ad}', ${book.fiyat}, '${book.resim}')">
+                Sepete Ekle
+            </button>
+
+            <button onclick="favoriyeEkle(${book.id}, '${book.ad}')">
+                Favorilere Ekle
+            </button>
+        `;
+
+        bookList.appendChild(card);
+    });
+}
+
+// Arama + Kategori Filtreleme + Sıralama
+function kitaplariFiltrele() {
+    const searchInput = document.getElementById("searchInput");
+    const categoryFilter = document.getElementById("categoryFilter");
+    const sortFilter = document.getElementById("sortFilter");
+
+    const searchValue = searchInput ? searchInput.value.toLowerCase() : "";
+    const categoryValue = categoryFilter ? categoryFilter.value : "all";
+    const sortValue = sortFilter ? sortFilter.value : "default";
+
+    let filteredBooks = allBooks.filter(book => {
+        const kitapAdi = book.ad.toLowerCase();
+        const yazarAdi = book.yazar.toLowerCase();
+        const kategoriAdi = book.kategori;
+
+        const aramaUyumlu =
+            kitapAdi.includes(searchValue) ||
+            yazarAdi.includes(searchValue);
+
+        const kategoriUyumlu =
+            categoryValue === "all" ||
+            kategoriAdi === categoryValue;
+
+        return aramaUyumlu && kategoriUyumlu;
+    });
+
+    if (sortValue === "nameAsc") {
+        filteredBooks.sort((a, b) => a.ad.localeCompare(b.ad));
+    }
+
+    if (sortValue === "priceAsc") {
+        filteredBooks.sort((a, b) => Number(a.fiyat) - Number(b.fiyat));
+    }
+
+    if (sortValue === "priceDesc") {
+        filteredBooks.sort((a, b) => Number(b.fiyat) - Number(a.fiyat));
+    }
+
+    kitaplariGoster(filteredBooks);
+}
+
+// Sepete Ekleme
+function sepeteEkle(id, ad, fiyat, resim) {
+    const urun = { id, ad, fiyat, resim };
+
+    sepet.push(urun);
+    localStorage.setItem("sepet", JSON.stringify(sepet));
+
+    addToCart(ad, fiyat + " TL", resim);
+
+    alert(ad + " sepete eklendi.");
+}
+
+// Favorilere Ekleme
+function favoriyeEkle(id, ad) {
+    const mevcutMu = favoriler.some(item => item.id === id);
+
+    if (mevcutMu) {
+        alert("Bu kitap zaten favorilerde.");
+        return;
+    }
+
+    favoriler.push({ id, ad });
+    localStorage.setItem("favoriler", JSON.stringify(favoriler));
+
+    alert(ad + " favorilere eklendi.");
+}
+
+// Fiyat Karşılaştırma Verisi
 const compareData = [
     { book: "Suç ve Ceza", platform: "Çiçi Kitap", price: 65, status: "En Uygun" },
     { book: "Suç ve Ceza", platform: "KitapYurdu", price: 72, status: "-" },
@@ -178,9 +281,11 @@ const compareData = [
 
 function renderCompareTable(data) {
     const tbody = document.getElementById("compare-body");
+
     if (!tbody) return;
 
     tbody.innerHTML = "";
+
     data.forEach(item => {
         tbody.innerHTML += `
             <tr>
@@ -197,20 +302,64 @@ function renderCompareTable(data) {
 
 function filterCompare() {
     const input = document.getElementById("compare-search");
+
     if (!input) return;
+
     const searchText = input.value.toLowerCase();
+
     const filtered = compareData.filter(item =>
         item.book.toLowerCase().includes(searchText)
     );
+
     renderCompareTable(filtered);
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+// Sayfa Yüklendiğinde Çalışacak Kodlar
+window.addEventListener('DOMContentLoaded', () => {
+    updateCartUI();
 
+    const themeBtn = document.getElementById('theme-toggle-btn');
+
+    if (themeBtn) {
+        themeBtn.innerHTML = document.documentElement.getAttribute('data-theme') === 'light'
+            ? '<i class="fas fa-moon"></i>'
+            : '<i class="fas fa-sun"></i>';
+    }
+
+    const searchInput = document.getElementById("searchInput");
+    const categoryFilter = document.getElementById("categoryFilter");
+    const sortFilter = document.getElementById("sortFilter");
+
+    if (searchInput) {
+        searchInput.addEventListener("keyup", kitaplariFiltrele);
+    }
+
+    if (categoryFilter) {
+        categoryFilter.addEventListener("change", kitaplariFiltrele);
+    }
+
+    if (sortFilter) {
+        sortFilter.addEventListener("change", kitaplariFiltrele);
+    }
+
+    if (document.getElementById("compare-body")) {
+        renderCompareTable(compareData);
+
+        const compareInput = document.getElementById("compare-search");
+
+        if (compareInput) {
+            compareInput.addEventListener("input", filterCompare);
+        }
+    }
+});
+
+// İletişim Formu
+document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("contact-form");
+
     if (!form) return;
 
-    form.addEventListener("submit", async function(e) {
+    form.addEventListener("submit", async function (e) {
         e.preventDefault();
 
         const message = document.getElementById("form-message");
@@ -249,59 +398,4 @@ document.addEventListener("DOMContentLoaded", function () {
         button.innerText = "Gönder";
         button.disabled = false;
     });
-
 });
-const bookList = document.getElementById("book-list");
-
-let sepet = JSON.parse(localStorage.getItem("sepet")) || [];
-let favoriler = JSON.parse(localStorage.getItem("favoriler")) || [];
-
-fetch("assets/data/books.json")
-    .then(response => response.json())
-    .then(books => {
-        books.forEach(book => {
-            const card = document.createElement("div");
-            card.className = "book-card";
-
-            card.innerHTML = `
-                <img src="${book.resim}" alt="${book.ad}">
-                <h3>${book.ad}</h3>
-                <p><strong>Yazar:</strong> ${book.yazar}</p>
-                <p><strong>Kategori:</strong> ${book.kategori}</p>
-                <p class="price">${book.fiyat} TL</p>
-
-                <button onclick="sepeteEkle(${book.id}, '${book.ad}', ${book.fiyat})">
-                    Sepete Ekle
-                </button>
-
-                <button onclick="favoriyeEkle(${book.id}, '${book.ad}')">
-                    Favorilere Ekle
-                </button>
-            `;
-
-            bookList.appendChild(card);
-        });
-    });
-
-function sepeteEkle(id, ad, fiyat) {
-    const urun = { id, ad, fiyat };
-
-    sepet.push(urun);
-    localStorage.setItem("sepet", JSON.stringify(sepet));
-
-    alert(ad + " sepete eklendi.");
-}
-
-function favoriyeEkle(id, ad) {
-    const mevcutMu = favoriler.some(item => item.id === id);
-
-    if (mevcutMu) {
-        alert("Bu kitap zaten favorilerde.");
-        return;
-    }
-
-    favoriler.push({ id, ad });
-    localStorage.setItem("favoriler", JSON.stringify(favoriler));
-
-    alert(ad + " favorilere eklendi.");
-}

@@ -150,17 +150,24 @@ let favoriler = JSON.parse(localStorage.getItem("favoriler")) || [];
 const jsonPath = window.location.pathname.includes("/pages/")
     ? "../assets/data/books.json"
     : "assets/data/books.json";
+    console.log("JSON yolu:", jsonPath);
 
 // JSON Kitapları Yükleme
 if (bookList) {
     fetch(jsonPath)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("JSON dosyası bulunamadı: " + jsonPath);
+            }
+            return response.json();
+        })
         .then(books => {
+            console.log("Gelen kitaplar:", books);
             allBooks = books;
             kitaplariGoster(allBooks);
         })
         .catch(error => {
-            bookList.innerHTML = "<p>Kitaplar yüklenirken hata oluştu.</p>";
+            bookList.innerHTML = "<p>Kitaplar yüklenirken hata oluştu. JSON yolu veya dosya adı hatalı olabilir.</p>";
             console.log("JSON yükleme hatası:", error);
         });
 }

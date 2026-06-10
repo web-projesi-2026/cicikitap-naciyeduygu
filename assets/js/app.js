@@ -468,29 +468,28 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 async function getWeather() {
-    const cityName = document.getElementById("city-name");
-    const temperature = document.getElementById("temperature");
-    const description = document.getElementById("weather-description");
-
-    if (!cityName || !temperature || !description) return;
-
-    const API_KEY = "BURAYA_API_KEYİNİ_YAZ";
-    const city = "Kirsehir";
 
     try {
-        const response = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric&lang=tr`
-        );
+
+        const response =
+        await fetch("https://wttr.in/Kirsehir?format=j1");
 
         const data = await response.json();
 
-        cityName.innerText = data.name;
-        temperature.innerText = Math.round(data.main.temp) + "°C";
-        description.innerText = data.weather[0].description;
-    } catch (error) {
-        cityName.innerText = "Hava durumu alınamadı";
-        temperature.innerText = "--°C";
-        description.innerText = "API bağlantısı başarısız.";
+        document.getElementById("city-name").innerText =
+        "Kırşehir";
+
+        document.getElementById("temperature").innerText =
+        data.current_condition[0].temp_C + "°C";
+
+        document.getElementById("weather-description").innerText =
+        data.current_condition[0].weatherDesc[0].value;
+
+    }
+    catch {
+
+        document.getElementById("city-name").innerText =
+        "Hava durumu alınamadı";
     }
 }
 

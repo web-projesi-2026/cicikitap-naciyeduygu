@@ -25,10 +25,10 @@ kayitForm.addEventListener("submit", async function (e) {
   }
 
   try {
-    const kullaniciBilgisi = await createUserWithEmailAndPassword(auth, email, sifre);
-    const kullanici = kullaniciBilgisi.user;
+    const sonuc = await createUserWithEmailAndPassword(auth, email, sifre);
+    const user = sonuc.user;
 
-    await setDoc(doc(db, "uyeler", kullanici.uid), {
+    await setDoc(doc(db, "uyeler", user.uid), {
       adsoyad: adsoyad,
       email: email,
       rol: "kullanici",
@@ -40,6 +40,6 @@ kayitForm.addEventListener("submit", async function (e) {
     toggleModal("register-modal");
 
   } catch (error) {
-    alert("Hata: " + error.message);
+    alert("Kayıt hatası: " + error.message);
   }
 });

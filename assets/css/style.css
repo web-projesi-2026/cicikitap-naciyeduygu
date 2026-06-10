@@ -190,3 +190,40 @@ nav{position:sticky;top:0;z-index:1000;display:flex;align-items:center;justify-c
 .book-card button:hover {
     background: #5c3a24;
 }
+.book-filter-area {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    flex-wrap: wrap;
+}
+
+.book-filter-area input,
+.book-filter-area select {
+    padding: 13px 18px;
+    border-radius: 25px;
+    border: 2px solid #d6a76c;
+    background: var(--card-bg, #fff8f0);
+    color: var(--text-color, #333);
+    font-size: 15px;
+    outline: none;
+    min-width: 220px;
+}
+
+.book-filter-area input:focus,
+.book-filter-area select:focus {
+    border-color: #b87945;
+    box-shadow: 0 0 8px rgba(184, 121, 69, 0.4);
+}
+
+@media (max-width: 768px) {
+    .book-filter-area {
+        flex-direction: column;
+    }
+
+    .book-filter-area input,
+    .book-filter-area select {
+        width: 90%;
+    }
+}

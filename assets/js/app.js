@@ -197,7 +197,7 @@ function kitaplariGoster(books) {
                 Sepete Ekle
             </button>
 
-            <button onclick="favoriyeEkle(${book.id}, '${book.ad}')">
+            <button onclick="favoriyeEkle(${book.id}, '${book.ad}', '${book.yazar}', '${book.kategori}', ${book.fiyat}, '${book.resim}')">
                 Favorilere Ekle
             </button>
         `;
@@ -260,7 +260,9 @@ function sepeteEkle(id, ad, fiyat, resim) {
 }
 
 // Favorilere Ekleme
-function favoriyeEkle(id, ad) {
+function favoriyeEkle(id, ad, yazar, kategori, fiyat, resim) {
+    let favoriler = JSON.parse(localStorage.getItem("favoriler")) || [];
+
     const mevcutMu = favoriler.some(item => item.id === id);
 
     if (mevcutMu) {
@@ -268,7 +270,15 @@ function favoriyeEkle(id, ad) {
         return;
     }
 
-    favoriler.push({ id, ad });
+    favoriler.push({
+        id: id,
+        ad: ad,
+        yazar: yazar,
+        kategori: kategori,
+        fiyat: fiyat,
+        resim: resim
+    });
+
     localStorage.setItem("favoriler", JSON.stringify(favoriler));
 
     alert(ad + " favorilere eklendi.");
@@ -292,8 +302,11 @@ document.addEventListener("DOMContentLoaded", function () {
     kayitliFavoriler.forEach(item => {
         favoritesList.innerHTML += `
             <div class="book-card">
+                <img src="${item.resim}" alt="${item.ad}">
                 <h3>${item.ad}</h3>
-                <p>Bu kitap favorilerinize eklendi.</p>
+                <p><strong>Yazar:</strong> ${item.yazar}</p>
+                <p><strong>Kategori:</strong> ${item.kategori}</p>
+                <p class="price">${item.fiyat} TL</p>
 
                 <button onclick="favoridenSil(${item.id})">
                     Favorilerden Sil

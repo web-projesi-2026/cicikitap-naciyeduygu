@@ -185,19 +185,47 @@
     </div>
 
     <div id="register-modal" class="modal">
-        <div class="modal-header">
-            <h3>Kayıt Ol 🐾</h3>
-            <span class="modal-close" onclick="toggleModal('register-modal')">&times;</span>
-        </div>
-
-        <form class="auth-form" onsubmit="event.preventDefault(); alert('Kayıt başarılı! 🐾'); toggleModal('register-modal');">
-            <input type="text" placeholder="Adınız Soyadınız" required>
-            <input type="email" placeholder="E-posta adresiniz" required>
-            <input type="password" placeholder="Şifreniz" required>
-            <input type="password" placeholder="Şifre Tekrar" required>
-            <button type="submit" class="btn btn-primary full-btn">Kayıt Ol</button>
-        </form>
+    <div class="modal-header">
+        <h3>Kayıt Ol 🐾</h3>
+        <span class="modal-close" onclick="toggleModal('register-modal')">&times;</span>
     </div>
+
+    <form id="kayitForm" class="auth-form">
+
+        <input
+            type="text"
+            id="adsoyad"
+            placeholder="Adınız Soyadınız"
+            required
+        >
+
+        <input
+            type="email"
+            id="email"
+            placeholder="E-posta adresiniz"
+            required
+        >
+
+        <input
+            type="password"
+            id="sifre"
+            placeholder="Şifreniz"
+            required
+        >
+
+        <input
+            type="password"
+            id="sifreTekrar"
+            placeholder="Şifre Tekrar"
+            required
+        >
+
+        <button type="submit" class="btn btn-primary full-btn">
+            Kayıt Ol
+        </button>
+
+    </form>
+</div>
 
     <div id="cart-modal" class="modal">
         <div class="modal-header">

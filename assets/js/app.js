@@ -466,3 +466,32 @@ document.addEventListener("DOMContentLoaded", function () {
         button.disabled = false;
     });
 });
+
+async function getWeather() {
+    const cityName = document.getElementById("city-name");
+    const temperature = document.getElementById("temperature");
+    const description = document.getElementById("weather-description");
+
+    if (!cityName || !temperature || !description) return;
+
+    const API_KEY = "BURAYA_API_KEYİNİ_YAZ";
+    const city = "Kirsehir";
+
+    try {
+        const response = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric&lang=tr`
+        );
+
+        const data = await response.json();
+
+        cityName.innerText = data.name;
+        temperature.innerText = Math.round(data.main.temp) + "°C";
+        description.innerText = data.weather[0].description;
+    } catch (error) {
+        cityName.innerText = "Hava durumu alınamadı";
+        temperature.innerText = "--°C";
+        description.innerText = "API bağlantısı başarısız.";
+    }
+}
+
+getWeather();

@@ -31,11 +31,17 @@
             <li><a href="index.html" class="active">Ana Sayfa</a></li>
             <li><a href="pages/about.html">Hakkımızda</a></li>
             <li><a href="pages/gallery.html">Kitaplarımız</a></li>
+            <li><a href="pages/favorites.html">Favorilerim</a></li>
             <li><a href="pages/contact.html">Geri Dönüşleriniz</a></li>
             <li><a href="pages/compare.html">Fiyat Karşılaştır</a></li>
             <li><a href="pages/cargo.html">Kargo Takip</a></li>
-            <li class="mobile-only"><a href="#" onclick="toggleModal('login-modal'); toggleMenu();">Giriş Yap</a></li>
-            <li class="mobile-only"><a href="#" onclick="toggleModal('register-modal'); toggleMenu();">Kayıt Ol</a></li>
+
+            <li class="mobile-only">
+                <a href="#" onclick="toggleModal('login-modal'); toggleMenu();">Giriş Yap</a>
+            </li>
+            <li class="mobile-only">
+                <a href="#" onclick="toggleModal('register-modal'); toggleMenu();">Kayıt Ol</a>
+            </li>
         </ul>
 
         <div class="auth-buttons">
@@ -62,7 +68,9 @@
     <header class="hero modern-hero">
         <div class="hero-content">
             <span class="hero-badge">Sahaf • Kitap • Sokak Dostları</span>
+
             <h1>Kitaplarla Daha Güzel Yarınlara</h1>
+
             <p>
                 Eski kokulu sayfalar, yeni maceralar ve sokak dostlarına destek
                 aynı çatı altında buluşuyor.
@@ -108,7 +116,6 @@
             <p>JSON dosyasından gelen kitaplar</p>
         </div>
 
-        <!-- YENİ EKLENEN FİLTRE ALANI -->
         <div class="book-filter-area">
             <input type="text" id="searchInput" placeholder="Kitap adı veya yazar ara...">
 
@@ -128,6 +135,8 @@
                 <option value="priceDesc">Fiyata Göre Azalan</option>
             </select>
         </div>
+
+        <p id="book-count" class="book-count"></p>
 
         <div class="book-grid" id="book-list"></div>
 

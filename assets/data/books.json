@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "ad": "Suç ve Ceza",
+        "yazar": "Dostoyevski",
+        "kategori": "Roman",
+        "fiyat": 65,
+        "resim": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400"
+    },
+    {
+        "id": 2,
+        "ad": "Kuyucaklı Yusuf",
+        "yazar": "Sabahattin Ali",
+        "kategori": "Roman",
+        "fiyat": 45,
+        "resim": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400"
+    },
+    {
+        "id": 3,
+        "ad": "Küçük Prens",
+        "yazar": "Antoine de Saint-Exupéry",
+        "kategori": "Çocuk",
+        "fiyat": 35,
+        "resim": "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400"
+    }
+]

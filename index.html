@@ -177,11 +177,14 @@
             <span class="modal-close" onclick="toggleModal('login-modal')">&times;</span>
         </div>
 
-        <form class="auth-form" onsubmit="event.preventDefault(); alert('Giriş başarılı! 🐾'); toggleModal('login-modal');">
-            <input type="email" id="login-email" placeholder="E-posta adresiniz" required>
-            <input type="password" id="login-password" placeholder="Şifreniz" required>
-            <button type="submit" class="btn btn-primary full-btn">Giriş Yap</button>
-        </form>
+        <form id="kayitForm" class="auth-form">
+    <input type="text" id="adsoyad" placeholder="Adınız Soyadınız" required>
+    <input type="email" id="email" placeholder="E-posta adresiniz" required>
+    <input type="password" id="sifre" placeholder="Şifreniz" required>
+    <input type="password" id="sifreTekrar" placeholder="Şifre Tekrar" required>
+    <button type="submit" class="btn btn-primary full-btn">Kayıt Ol</button>
+</form>
+            
     </div>
 
     <div id="register-modal" class="modal">

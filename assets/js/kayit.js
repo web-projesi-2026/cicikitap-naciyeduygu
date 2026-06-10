@@ -9,56 +9,37 @@ import {
   setDoc
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
-const form = document.getElementById("kayitForm");
+const kayitForm = document.getElementById("kayitForm");
 
-form.addEventListener("submit", async (e) => {
+kayitForm.addEventListener("submit", async function (e) {
+  e.preventDefault();
 
-    e.preventDefault();
+  const adsoyad = document.getElementById("adsoyad").value;
+  const email = document.getElementById("email").value;
+  const sifre = document.getElementById("sifre").value;
+  const sifreTekrar = document.getElementById("sifreTekrar").value;
 
-    const adsoyad =
-      document.getElementById("adsoyad").value;
+  if (sifre !== sifreTekrar) {
+    alert("Şifreler uyuşmuyor!");
+    return;
+  }
 
-    const email =
-      document.getElementById("email").value;
+  try {
+    const kullaniciBilgisi = await createUserWithEmailAndPassword(auth, email, sifre);
+    const kullanici = kullaniciBilgisi.user;
 
-    const sifre =
-      document.getElementById("sifre").value;
+    await setDoc(doc(db, "uyeler", kullanici.uid), {
+      adsoyad: adsoyad,
+      email: email,
+      rol: "kullanici",
+      tarih: new Date().toLocaleDateString("tr-TR")
+    });
 
-    const sifreTekrar =
-      document.getElementById("sifreTekrar").value;
+    alert("Kayıt başarılı! 🐾");
+    kayitForm.reset();
+    toggleModal("register-modal");
 
-    if (sifre !== sifreTekrar) {
-        alert("Şifreler uyuşmuyor!");
-        return;
-    }
-
-    try {
-
-        const userCredential =
-        await createUserWithEmailAndPassword(
-            auth,
-            email,
-            sifre
-        );
-
-        const user = userCredential.user;
-
-        await setDoc(
-          doc(db, "uyeler", user.uid),
-          {
-             adsoyad: adsoyad,
-             email: email,
-             rol: "kullanici",
-             tarih: new Date().toLocaleDateString("tr-TR")
-          }
-        );
-
-        alert("Kayıt başarılı!");
-
-    } catch (error) {
-
-        alert(error.message);
-
-    }
-
+  } catch (error) {
+    alert("Hata: " + error.message);
+  }
 });

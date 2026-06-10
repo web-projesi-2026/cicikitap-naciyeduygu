@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "ad": "Suç ve Ceza",
+    "yazar": "Fyodor Dostoyevski",
+    "kategori": "Roman",
+    "fiyat": 65,
+    "resim": "https://covers.openlibrary.org/b/id/8231996-L.jpg"
+  },
+  {
+    "id": 2,
+    "ad": "Kuyucaklı Yusuf",
+    "yazar": "Sabahattin Ali",
+    "kategori": "Roman",
+    "fiyat": 45,
+    "resim": "https://covers.openlibrary.org/b/id/10523338-L.jpg"
+  },
+  {
+    "id": 3,
+    "ad": "Küçük Prens",
+    "yazar": "Antoine de Saint-Exupéry",
+    "kategori": "Çocuk",
+    "fiyat": 35,
+    "resim": "https://covers.openlibrary.org/b/id/10521270-L.jpg"
+  },
+  {
+    "id": 4,
+    "ad": "1984",
+    "yazar": "George Orwell",
+    "kategori": "Klasik",
+    "fiyat": 70,
+    "resim": "https://covers.openlibrary.org/b/id/7222246-L.jpg"
+  },
+  {
+    "id": 5,
+    "ad": "Hayvan Çiftliği",
+    "yazar": "George Orwell",
+    "kategori": "Klasik",
+    "fiyat": 55,
+    "resim": "https://covers.openlibrary.org/b/id/8228691-L.jpg"
+  },
+  {
+    "id": 6,
+    "ad": "Sefiller",
+    "yazar": "Victor Hugo",
+    "kategori": "Klasik",
+    "fiyat": 90,
+    "resim": "https://covers.openlibrary.org/b/id/8231856-L.jpg"
+  },
+  {
+    "id": 7,
+    "ad": "Tutunamayanlar",
+    "yazar": "Oğuz Atay",
+    "kategori": "Roman",
+    "fiyat": 95,
+    "resim": "https://covers.openlibrary.org/b/id/10523073-L.jpg"
+  },
+  {
+    "id": 8,
+    "ad": "Çalıkuşu",
+    "yazar": "Reşat Nuri Güntekin",
+    "kategori": "Roman",
+    "fiyat": 50,
+    "resim": "https://covers.openlibrary.org/b/id/8235116-L.jpg"
+  },
+  {
+    "id": 9,
+    "ad": "İçimizdeki Şeytan",
+    "yazar": "Sabahattin Ali",
+    "kategori": "Roman",
+    "fiyat": 42,
+    "resim": "https://covers.openlibrary.org/b/id/10523341-L.jpg"
+  },
+  {
+    "id": 10,
+    "ad": "Safahat",
+    "yazar": "Mehmet Akif Ersoy",
+    "kategori": "Şiir",
+    "fiyat": 60,
+    "resim": "https://covers.openlibrary.org/b/id/8235201-L.jpg"
+  },
+  {
+    "id": 11,
+    "ad": "Şermin",
+    "yazar": "Tevfik Fikret",
+    "kategori": "Şiir",
+    "fiyat": 38,
+    "resim": "https://covers.openlibrary.org/b/id/8235210-L.jpg"
+  },
+  {
+    "id": 12,
+    "ad": "Atomik Alışkanlıklar",
+    "yazar": "James Clear",
+    "kategori": "Kişisel Gelişim",
+    "fiyat": 120,
+    "resim": "https://covers.openlibrary.org/b/id/11153268-L.jpg"
+  },
+  {
+    "id": 13,
+    "ad": "Düşün ve Zengin Ol",
+    "yazar": "Napoleon Hill",
+    "kategori": "Kişisel Gelişim",
+    "fiyat": 85,
+    "resim": "https://covers.openlibrary.org/b/id/10523044-L.jpg"
+  },
+  {
+    "id": 14,
+    "ad": "Simyacı",
+    "yazar": "Paulo Coelho",
+    "kategori": "Roman",
+    "fiyat": 75,
+    "resim": "https://covers.openlibrary.org/b/id/8234145-L.jpg"
+  },
+  {
+    "id": 15,
+    "ad": "Fareler ve İnsanlar",
+    "yazar": "John Steinbeck",
+    "kategori": "Klasik",
+    "fiyat": 58,
+    "resim": "https://covers.openlibrary.org/b/id/8235084-L.jpg"
+  }
+]

@@ -227,3 +227,32 @@ nav{position:sticky;top:0;z-index:1000;display:flex;align-items:center;justify-c
         width: 90%;
     }
 }
+.weather-section{
+    padding:40px 20px;
+    display:flex;
+    justify-content:center;
+}
+
+.weather-card{
+    width:320px;
+    text-align:center;
+    padding:25px;
+    border-radius:20px;
+    backdrop-filter:blur(10px);
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+}
+
+.weather-card h2{
+    margin-bottom:15px;
+}
+
+.weather-card h3{
+    color:#e8b85b;
+}
+
+.weather-card #temperature{
+    font-size:40px;
+    font-weight:bold;
+    margin:15px 0;
+}

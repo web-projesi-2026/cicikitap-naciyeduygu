@@ -22,11 +22,10 @@ function toggleTheme() {
     }
 }
 
-// Sayfa yüklendiğinde temayı ayarla
 const savedTheme = localStorage.getItem('theme') || 'dark';
 document.documentElement.setAttribute('data-theme', savedTheme);
 
-// Yukarı Çık Butonu Kontrolü
+// Yukarı Çık Butonu
 window.onscroll = function () {
     const btn = document.getElementById('back-to-top');
 
@@ -57,7 +56,6 @@ function toggleModal(modalId) {
     }
 }
 
-// Boş yere tıklandığında modalları kapat
 window.addEventListener('click', (e) => {
     const modals = document.querySelectorAll('.modal');
 
@@ -84,7 +82,6 @@ function updateCartUI() {
 function addToCart(title, price, img) {
     cart.push({ title, price, img });
     updateCartUI();
-    alert(title + " sepete eklendi! 🐾");
 }
 
 function removeFromCart(index) {
@@ -149,9 +146,14 @@ let allBooks = [];
 let sepet = JSON.parse(localStorage.getItem("sepet")) || [];
 let favoriler = JSON.parse(localStorage.getItem("favoriler")) || [];
 
+// Sayfa konumuna göre JSON yolu
+const jsonPath = window.location.pathname.includes("/pages/")
+    ? "../assets/data/books.json"
+    : "assets/data/books.json";
+
 // JSON Kitapları Yükleme
 if (bookList) {
-    fetch("assets/data/books.json")
+    fetch(jsonPath)
         .then(response => response.json())
         .then(books => {
             allBooks = books;
@@ -166,6 +168,12 @@ if (bookList) {
 // Kitapları Ekranda Gösterme
 function kitaplariGoster(books) {
     if (!bookList) return;
+
+    const bookCount = document.getElementById("book-count");
+
+    if (bookCount) {
+        bookCount.innerText = books.length + " kitap listeleniyor";
+    }
 
     bookList.innerHTML = "";
 
@@ -204,14 +212,14 @@ function kitaplariFiltrele() {
     const categoryFilter = document.getElementById("categoryFilter");
     const sortFilter = document.getElementById("sortFilter");
 
-    const searchValue = searchInput ? searchInput.value.toLowerCase() : "";
-    const categoryValue = categoryFilter ? categoryFilter.value : "all";
+    const searchValue = searchInput ? searchInput.value.toLowerCase().trim() : "";
+    const categoryValue = categoryFilter ? categoryFilter.value.toLowerCase().trim() : "all";
     const sortValue = sortFilter ? sortFilter.value : "default";
 
     let filteredBooks = allBooks.filter(book => {
-        const kitapAdi = book.ad.toLowerCase();
-        const yazarAdi = book.yazar.toLowerCase();
-        const kategoriAdi = book.kategori;
+        const kitapAdi = book.ad.toLowerCase().trim();
+        const yazarAdi = book.yazar.toLowerCase().trim();
+        const kategoriAdi = book.kategori.toLowerCase().trim();
 
         const aramaUyumlu =
             kitapAdi.includes(searchValue) ||
@@ -264,6 +272,45 @@ function favoriyeEkle(id, ad) {
     localStorage.setItem("favoriler", JSON.stringify(favoriler));
 
     alert(ad + " favorilere eklendi.");
+}
+
+// Favoriler Sayfası
+document.addEventListener("DOMContentLoaded", function () {
+    const favoritesList = document.getElementById("favorites-list");
+
+    if (!favoritesList) return;
+
+    const kayitliFavoriler = JSON.parse(localStorage.getItem("favoriler")) || [];
+
+    if (kayitliFavoriler.length === 0) {
+        favoritesList.innerHTML = "<p>Henüz favorilere eklenmiş kitap yok. 🐾</p>";
+        return;
+    }
+
+    favoritesList.innerHTML = "";
+
+    kayitliFavoriler.forEach(item => {
+        favoritesList.innerHTML += `
+            <div class="book-card">
+                <h3>${item.ad}</h3>
+                <p>Bu kitap favorilerinize eklendi.</p>
+
+                <button onclick="favoridenSil(${item.id})">
+                    Favorilerden Sil
+                </button>
+            </div>
+        `;
+    });
+});
+
+function favoridenSil(id) {
+    let kayitliFavoriler = JSON.parse(localStorage.getItem("favoriler")) || [];
+
+    kayitliFavoriler = kayitliFavoriler.filter(item => item.id !== id);
+
+    localStorage.setItem("favoriler", JSON.stringify(kayitliFavoriler));
+
+    location.reload();
 }
 
 // Fiyat Karşılaştırma Verisi
